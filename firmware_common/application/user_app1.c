@@ -156,14 +156,14 @@ static void UserApp1SM_Idle(void)
   if (G_u32SystemTime1ms % 80 == 0)//change num this to change rate of wave
   {
     u16WaveHeight++;
-    LedPWM(WHITE, LED_PWM_40 - (u16WaveHeight % 8));
-    LedPWM(PURPLE, LED_PWM_40 - ((u16WaveHeight + 1) % 8));
-    LedPWM(BLUE, LED_PWM_40 - ((u16WaveHeight + 2) % 8));
-    LedPWM(CYAN, LED_PWM_40 - ((u16WaveHeight + 3)% 8));
-    LedPWM(GREEN, LED_PWM_40 - ((u16WaveHeight + 4) % 8));
-    LedPWM(YELLOW, LED_PWM_40 - ((u16WaveHeight + 5)  % 8));
-    LedPWM(ORANGE, LED_PWM_40 - ((u16WaveHeight + 6) % 8));
-    LedPWM(RED, LED_PWM_40 - ((u16WaveHeight + 7) % 8));
+    LedPWM(WHITE, LED_PWM_75 - (u16WaveHeight % 8) * 2);
+    LedPWM(PURPLE, LED_PWM_75 - ((u16WaveHeight + 1) % 8) * 2);
+    LedPWM(BLUE, LED_PWM_75 - ((u16WaveHeight + 2) % 8) * 2);
+    LedPWM(CYAN, LED_PWM_75 - ((u16WaveHeight + 3)% 8) * 2);
+    LedPWM(GREEN, LED_PWM_75 - ((u16WaveHeight + 4) % 8) * 2);
+    LedPWM(YELLOW, LED_PWM_75 - ((u16WaveHeight + 5)  % 8) * 2);
+    LedPWM(ORANGE, LED_PWM_75 - ((u16WaveHeight + 6) % 8) * 2);
+    LedPWM(RED, LED_PWM_75 - ((u16WaveHeight + 7) % 8) * 2);
     //the wave travels from right to left and it bright to dark
   }
 } /* end UserApp1SM_Idle() */
