@@ -92,7 +92,19 @@ Promises:
 */
 void UserApp1Initialize(void)
 {
-  /* If good initialization, set state to Idle */
+  
+/* All discrete LEDs to off */
+  LedOff(WHITE);
+  LedOff(PURPLE);
+  LedOff(BLUE);
+  LedOff(CYAN);
+  LedOff(GREEN);
+  LedOff(YELLOW);
+  LedOff(ORANGE);
+  LedOff(RED);
+  
+  /*make a wave like feture on the board */
+  
   if( 1 )
   {
     UserApp1_pfStateMachine = UserApp1SM_Idle;
@@ -102,7 +114,6 @@ void UserApp1Initialize(void)
     /* The task isn't properly initialized, so shut it down and don't run */
     UserApp1_pfStateMachine = UserApp1SM_Error;
   }
-
 } /* end UserApp1Initialize() */
 
   
@@ -140,7 +151,21 @@ State Machine Function Definitions
 /* What does this state do? */
 static void UserApp1SM_Idle(void)
 {
+  static u16 u16WaveHeight = 0;
+  
+  if (G_u32SystemTime1ms % 100 == 0)//change num this to change rate of wave
+  {
+    u16WaveHeight++;
+    LedPWM(WHITE, LED_PWM_5 + (u16WaveHeight % 8));
+    LedPWM(PURPLE, LED_PWM_5 + ((u16WaveHeight + 1) % 8));
+    LedPWM(BLUE, LED_PWM_5 + ((u16WaveHeight + 2) % 8));
+    LedPWM(CYAN, LED_PWM_5 + ((u16WaveHeight + 3)% 8));
+    LedPWM(GREEN, LED_PWM_5 + ((u16WaveHeight + 4) % 8));
+    LedPWM(YELLOW, LED_PWM_5 + ((u16WaveHeight + 5)  % 8));
+    LedPWM(ORANGE, LED_PWM_5 + ((u16WaveHeight + 6) % 8));
+    LedPWM(RED, LED_PWM_5 + ((u16WaveHeight + 7) % 8));
     
+  }
 } /* end UserApp1SM_Idle() */
      
 
