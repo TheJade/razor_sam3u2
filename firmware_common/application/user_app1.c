@@ -167,7 +167,7 @@ static void UserApp1SM_Idle(void)
     //the wave travels from right to left and it bright to dark
   }
 } /* end UserApp1SM_Idle() */
-     
+     //This is just a comment to change the file
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* Handle an error */
