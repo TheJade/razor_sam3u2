@@ -336,6 +336,7 @@ u32 QueueMessage(MessageType** ppsTargetTxBuffer_, u32 u32MessageSize_, u8* pu8M
     else
     {
       /* Find the last node */
+      int x = 0;
       psListParser = *ppsTargetTxBuffer_;
       while(psListParser->psNextMessage != NULL)
       {
