@@ -50,6 +50,7 @@ Promises:
 - NONE
 
 */
+
 void main(void)
 {
   G_u32SystemFlags |= _SYSTEM_INITIALIZING;

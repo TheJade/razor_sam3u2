@@ -150,62 +150,69 @@ State Machine Function Definitions
 **********************************************************************************************************************/
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* What does this state do? */
+
+//MY CODE STARTS HERE
+
+#define ENTERPASSCODETIME 7000
+
 static void UserApp1SM_Idle(void)
 {
   static u16 u16PasscodePlace = 0;
   static bool bArrayPasscode[] = {TRUE, FALSE, FALSE, FALSE,
                                   FALSE, TRUE, FALSE, FALSE,
                                   FALSE, FALSE, TRUE, FALSE,
-                                  FALSE, FALSE, FALSE, TRUE};
+                                  FALSE, FALSE, FALSE, TRUE,
+                                  FALSE, FALSE, FALSE, FALSE,
+                                  FALSE, FALSE, FALSE, FALSE,
+                                  FALSE, FALSE, FALSE, FALSE,
+                                  FALSE, FALSE, FALSE, FALSE,
+                                  FALSE, FALSE, FALSE, FALSE,
+                                  FALSE, FALSE, FALSE, FALSE}; //can hold 10 numbers
   static bool bChanged = FALSE;
   
-  //changes the passcode
-  if (G_u32SystemTime1ms > 5000)
+  //changes the passcode give the user till ENTERPASSCODETIME miliseconds
+  if (G_u32SystemTime1ms < ENTERPASSCODETIME)
   {
     if (WasButtonPressed(BUTTON0))
     {
       ButtonAcknowledge(BUTTON0);
-      u16PasscodePlace++;
       bArrayPasscode[u16PasscodePlace * 4] = TRUE;
       bArrayPasscode[u16PasscodePlace * 4 + 1] = FALSE;
       bArrayPasscode[u16PasscodePlace * 4 + 2] = FALSE;
-      bArrayPasscode[u16PasscodePlace * 4 + 3] = FALSE;
+      bArrayPasscode[u16PasscodePlace * 4 + 3] = FALSE;u16PasscodePlace++;
       bChanged = TRUE;
     }
-    else if (WasButtonPressed(BUTTON1))
+    if (WasButtonPressed(BUTTON1))
     {
       ButtonAcknowledge(BUTTON1);
-      u16PasscodePlace++;
       bArrayPasscode[u16PasscodePlace * 4] = FALSE;
       bArrayPasscode[u16PasscodePlace * 4 + 1] = TRUE;
       bArrayPasscode[u16PasscodePlace * 4 + 2] = FALSE;
-      bArrayPasscode[u16PasscodePlace * 4 + 3] = FALSE;
+      bArrayPasscode[u16PasscodePlace * 4 + 3] = FALSE;u16PasscodePlace++;
       bChanged = TRUE;
     }
-    else if (WasButtonPressed(BUTTON2))
+    if (WasButtonPressed(BUTTON2))
     {
       ButtonAcknowledge(BUTTON2);
-      u16PasscodePlace++;
       bArrayPasscode[u16PasscodePlace * 4] = FALSE;
       bArrayPasscode[u16PasscodePlace * 4 + 1] = FALSE;
       bArrayPasscode[u16PasscodePlace * 4 + 2] = TRUE;
-      bArrayPasscode[u16PasscodePlace * 4 + 3] = FALSE;
+      bArrayPasscode[u16PasscodePlace * 4 + 3] = FALSE;u16PasscodePlace++;
       bChanged = TRUE;
     }
-    else if (WasButtonPressed(BUTTON3))
+    if (WasButtonPressed(BUTTON3))
     {
       ButtonAcknowledge(BUTTON3);
-      u16PasscodePlace++;
       bArrayPasscode[u16PasscodePlace * 4] = FALSE;
       bArrayPasscode[u16PasscodePlace * 4 + 1] = FALSE;
       bArrayPasscode[u16PasscodePlace * 4 + 2] = FALSE;
-      bArrayPasscode[u16PasscodePlace * 4 + 3] = TRUE;
+      bArrayPasscode[u16PasscodePlace * 4 + 3] = TRUE;u16PasscodePlace++;
       bChanged = TRUE;
     }
   }
-  static u16 u16PasscodeLength = 10000; //will be replaced after 5 seconds
+  static u16 u16PasscodeLength = 10000; //will be replaced after 7 seconds
   
-  if (G_u32SystemTime1ms == 5000 && bChanged)
+  if (G_u32SystemTime1ms == ENTERPASSCODETIME && bChanged)
   {
     u16PasscodeLength = u16PasscodePlace;
     u16PasscodePlace = 0;
@@ -213,7 +220,7 @@ static void UserApp1SM_Idle(void)
     LedOff(YELLOW);
 
   }
-  else if (G_u32SystemTime1ms == 5000)
+  else if (G_u32SystemTime1ms == ENTERPASSCODETIME)
   {
     u16PasscodeLength = 4;
     LedOn(RED);
@@ -239,26 +246,29 @@ static void UserApp1SM_Idle(void)
     u16PasscodePlace++;
     ButtonAcknowledge(BUTTON3);
   }
-  else if (WasButtonPressed(BUTTON0) || WasButtonPressed(BUTTON1) || WasButtonPressed(BUTTON2) || WasButtonPressed(BUTTON3))
-  {
-    ButtonAcknowledge(BUTTON0);
-    ButtonAcknowledge(BUTTON1);
-    ButtonAcknowledge(BUTTON2);
-    ButtonAcknowledge(BUTTON3);
-    LedOn(RED);
-    u16PasscodePlace = 0;
-    LedOff(WHITE);
-    LedOff(PURPLE);
-    LedOff(BLUE);
-    LedOff(CYAN);
-    LedOff(GREEN);
-    LedOff(YELLOW);
-    LedOff(ORANGE);
-  }
+  
+  if (WasButtonPressed(BUTTON0) || WasButtonPressed(BUTTON1) || WasButtonPressed(BUTTON2) || WasButtonPressed(BUTTON3))
+    {
+      ButtonAcknowledge(BUTTON0);
+      ButtonAcknowledge(BUTTON1);
+      ButtonAcknowledge(BUTTON2);
+      ButtonAcknowledge(BUTTON3);
+      LedOn(RED);
+      u16PasscodePlace = 0;
+      LedOff(WHITE);
+      LedOff(PURPLE);
+      LedOff(BLUE);
+      LedOff(CYAN);
+      LedOff(GREEN);
+      LedOff(YELLOW);
+      LedOff(ORANGE);
+    }
+  
   if (u16PasscodePlace == u16PasscodeLength)
   {
     static u16 u16WaveHeight = 0;
     
+    //preforms a fancy light show
     if (G_u32SystemTime1ms % 80 == 0)//change num this to change rate of wave
     {
       u16WaveHeight++;
@@ -272,25 +282,26 @@ static void UserApp1SM_Idle(void)
       LedPWM(RED, LED_PWM_75 - ((u16WaveHeight + 7) % 8) * 2);
       //the wave travels from right to left and it bright to dark
      }
+#if 0  //i don't think this works here
+    if (WasButtonPressed(BUTTON0) || WasButtonPressed(BUTTON1) || WasButtonPressed(BUTTON2) || WasButtonPressed(BUTTON3))
+    {
+      ButtonAcknowledge(BUTTON0);
+      ButtonAcknowledge(BUTTON1);
+      ButtonAcknowledge(BUTTON2);
+      ButtonAcknowledge(BUTTON3);
+      LedOn(RED);
+      u16PasscodePlace = 0;
+      LedOff(WHITE);
+      LedOff(PURPLE);
+      LedOff(BLUE);
+      LedOff(CYAN);
+      LedOff(GREEN);
+      LedOff(YELLOW);
+      LedOff(ORANGE);
+    }
+#endif
   }
   
-#if 0
-    static u16 u16WaveHeight = 0;
-    
-    if (G_u32SystemTime1ms % 80 == 0)//change num this to change rate of wave
-    {
-      u16WaveHeight++;
-      LedPWM(WHITE, LED_PWM_75 - (u16WaveHeight % 8) * 2);
-      LedPWM(PURPLE, LED_PWM_75 - ((u16WaveHeight + 1) % 8) * 2);
-      LedPWM(BLUE, LED_PWM_75 - ((u16WaveHeight + 2) % 8) * 2);
-      LedPWM(CYAN, LED_PWM_75 - ((u16WaveHeight + 3)% 8) * 2);
-      LedPWM(GREEN, LED_PWM_75 - ((u16WaveHeight + 4) % 8) * 2);
-      LedPWM(YELLOW, LED_PWM_75 - ((u16WaveHeight + 5)  % 8) * 2);
-      LedPWM(ORANGE, LED_PWM_75 - ((u16WaveHeight + 6) % 8) * 2);
-      LedPWM(RED, LED_PWM_75 - ((u16WaveHeight + 7) % 8) * 2);
-      //the wave travels from right to left and it bright to dark
-     }
-#endif
   
 } /* end UserApp1SM_Idle() */
      //This is just a comment to change the file
