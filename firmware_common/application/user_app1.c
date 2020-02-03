@@ -1,77 +1,127 @@
-/*Random Number Generator branch
-
-
 /*!*********************************************************************************************************************
 @file user_app1.c                                                                
 @brief User's tasks / applications are written here.  This description
-@ -77,23 +80,18 @@ Function Definitions
+should be replaced by something specific to the task.
+----------------------------------------------------------------------------------------------------------------------
+To start a new task using this user_app1 as a template:
+ 1. Copy both user_app1.c and user_app1.h to the Application directory
+ 2. Rename the files yournewtaskname.c and yournewtaskname.h
+ 3. Add yournewtaskname.c and yournewtaskname.h to the Application Include and Source groups in the IAR project
+ 4. Use ctrl-h (make sure "Match Case" is checked) to find and replace all instances of "user_app1" with "yournewtaskname"
+ 5. Use ctrl-h to find and replace all instances of "UserApp1" with "YourNewTaskName"
+ 6. Use ctrl-h to find and replace all instances of "USER_APP1" with "YOUR_NEW_TASK_NAME"
+ 7. Add a call to YourNewTaskNameInitialize() in the init section of main
+ 8. Add a call to YourNewTaskNameRunActiveState() in the Super Loop section of main
+ 9. Update yournewtaskname.h per the instructions at the top of yournewtaskname.h
+10. Delete this text (between the dashed lines) and update the Description below to describe your task
+----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+GLOBALS
+- NONE
+CONSTANTS
+- NONE
+TYPES
+- NONE
+PUBLIC FUNCTIONS
+- NONE
+PROTECTED FUNCTIONS
+- void UserApp1Initialize(void)
+- void UserApp1RunActiveState(void)
+**********************************************************************************************************************/
 
-/*!--------------------------------------------------------------------------------------------------------------------
-@fn void UserApp1Initialize(void)
-@brief
-Initializes the State Machine and its variables.
-Should only be called once in main init section.
-*/
+#include "configuration.h"
+
+/***********************************************************************************************************************
+Global variable definitions with scope across entire project.
+All Global variable names shall start with "G_<type>UserApp1"
+***********************************************************************************************************************/
+/* New variables */
+volatile u32 G_u32UserApp1Flags;                          /*!< @brief Global state flags */
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* Existing variables (defined in other files -- should all contain the "extern" keyword) */
+extern volatile u32 G_u32SystemTime1ms;                   /*!< @brief From main.c */
+extern volatile u32 G_u32SystemTime1s;                    /*!< @brief From main.c */
+extern volatile u32 G_u32SystemFlags;                     /*!< @brief From main.c */
+extern volatile u32 G_u32ApplicationFlags;                /*!< @brief From main.c */
+
+static fnCode_type UserApp1_pfStateMachine;               /*!< @brief The state machine function pointer */
+//static u32 UserApp1_u32Timeout;                           /*!< @brief Timeout counter used across states */
+static void ChooseGame(void);
+static void Startup(void);
+static void Game1(void);
+static void Game2(void);
+static void Game3(void);
+static void Game4(void);
 
 //Put global veribals here
-u32 u32TimePressFirst = 0; //Stores the
-u32 u32numPressSecond = 0;
+u32 TimePressFirst = 0; //Stores the
+u32 numPressSecond = 0;
 
 void UserApp1Initialize(void)
 {
-
-  //Turns the LEDs off just in case they were on for some reason
+  
+/* All discrete LEDs to off */
   LedOff(WHITE);
   LedOff(PURPLE);
   LedOff(BLUE);
+  LedOff(CYAN);
+  LedOff(GREEN);
+  LedOff(YELLOW);
   LedOff(ORANGE);
   LedOff(RED);
+  LcdMessage(LINE1_START_ADDR, "Press a Button    ");
+  
+  /*make a wave like feture on the board */
   
   if( 1 )
   {
-    UserApp1_pfStateMachine = StartUp;//first state that is run
+    UserApp1_pfStateMachine = Startup;
   }
   else
   {
-
+    /* The task isn't properly initialized, so shut it down and don't run */
+    UserApp1_pfStateMachine = UserApp1SM_Error;
   }
 } /* end UserApp1Initialize() */
 
-
-void UserApp1RunActiveState(void)
-{
-  UserApp1_pfStateMachine();
-} /* end UserApp1RunActiveState */
-
-
-
-/**********************************************************************************************************************
-State Machine Function Definitions
-Write the functions starting here put in order of operating
-**********************************************************************************************************************/
-/*-------------------------------------------------------------------------------------------------------------------*/
-/* What does this state do? */
-static void StartUp(void) //start up
+static void Startup(void) //start up
 {
   LedOn(ORANGE); //Just for testing
-  LCDMessage(LINE1_START_ADDR, "Press a Button to start");
+  //void LcdMessage(u8 u8Address_, u8 *u8Message_) 
   if (WasButtonPressed(BUTTON0))
   {
     TimePressFirst = G_u32SystemTime1ms;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON0);
+    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
+    LcdMessage(LINE2_START_ADDR, "0");
+    LcdMessage(LINE2_START_ADDR + 6, "1");
+    LcdMessage(LINE2_START_ADDR + 13, "2");
+    LcdMessage(LINE2_END_ADDR, "3");
   }
   else if (WasButtonPressed(BUTTON1))
   {
     TimePressFirst = G_u32SystemTime1ms + 250;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON1);
+    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
+    LcdMessage(LINE2_START_ADDR, "0");
+    LcdMessage(LINE2_START_ADDR + 6, "1");
+    LcdMessage(LINE2_START_ADDR + 13, "2");
+    LcdMessage(LINE2_END_ADDR, "3");
   }
   else if (WasButtonPressed(BUTTON2))
   {
     TimePressFirst = G_u32SystemTime1ms + 500;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON2);
+    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
+    LcdMessage(LINE2_START_ADDR, "0");
+    LcdMessage(LINE2_START_ADDR + 6, "1");
+    LcdMessage(LINE2_START_ADDR + 13, "2");
+    LcdMessage(LINE2_END_ADDR, "3");
   }
      
   else if (WasButtonPressed(BUTTON3))
@@ -79,23 +129,38 @@ static void StartUp(void) //start up
     TimePressFirst = G_u32SystemTime1ms + 750;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON3);
+    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
+    LcdMessage(LINE2_START_ADDR, "0");
+    LcdMessage(LINE2_START_ADDR + 6, "1");
+    LcdMessage(LINE2_START_ADDR + 13, "2");
+    LcdMessage(LINE2_END_ADDR, "3");
   }
 }
 
-
 static void ChooseGame(void)
 {
-  LCDMessage(LINE1_START_ADDR, "Select a Game");
-  LCDMessage(LINE2_START_ADDR, "0");
-  LCDMessage(LINE2_START_ADDR + 6, "1");
-  LCDMessage(LINE2_START_ADDR + 13, "2");
-  LCDMessage(LINE2_END_ADDR, "3");
-  LedOn(GREEN);
-  if (WasButtonPressed(BUTTON0))
+  static int button0press = 0;
+  LedOn(GREEN);//testing
+  LedOff(ORANGE);//testing
+  LedOff(WHITE);//testing
+  if (WasButtonPressed(BUTTON0) || button0press) //this is a submenu
   {
-    TimePressFirst *= (G_u32SystemTime1ms % 100);
-    UserApp1_pfStateMachine = Game1;
+    button0press = 1;
     ButtonAcknowledge(BUTTON0);
+    TimePressFirst *= (G_u32SystemTime1ms % 100);
+    LcdMessage(LINE1_START_ADDR, "Hangman      ");
+    LcdMessage(LINE2_START_ADDR, "Start        ");
+    LcdMessage(LINE2_START_ADDR + 13, "Back");
+    if (WasButtonPressed(BUTTON0))
+    {
+      UserApp1_pfStateMachine = Game1;  //acivates the game
+      ButtonAcknowledge(BUTTON0);
+    }
+    else if (WasButtonPressed(BUTTON3)) //quits the sub menu
+    {
+      button0press = 0;
+      ButtonAcknowledge(BUTTON3);
+    }
   }
   else if (WasButtonPressed(BUTTON1))
   {
@@ -119,22 +184,57 @@ static void ChooseGame(void)
 
 static void Game1(void)
 {
-  LCDMessage(LINE1_START_ADDR, "Game1   ");
+  LcdMessage(LINE1_START_ADDR, "Game1        ");
+  LedOn(RED);
 }
 
 static void Game2(void)
 {
-  LCDMessage(LINE1_START_ADDR, "Game2   ");
+  LcdMessage(LINE1_START_ADDR, "Game2        ");
+  LedOn(WHITE);
 }
 
 static void Game3(void)
 {
-  LCDMessage(LINE1_START_ADDR, "Game3   ");
+  LcdMessage(LINE1_START_ADDR, "Game3        ");
+  LedOn(CYAN);
 }
 static void Game4(void)
 {
-  LCDMessage(LINE1_START_ADDR, "Game4   ");
+  LcdMessage(LINE1_START_ADDR, "Game4        ");
+  LedOn(YELLOW);
 }
+  
+/*!----------------------------------------------------------------------------------------------------------------------
+@fn void UserApp1RunActiveState(void)
+@brief Selects and runs one iteration of the current state in the state machine.
+All state machines have a TOTAL of 1ms to execute, so on average n state machines
+may take 1ms / n to execute.
+Requires:
+- State machine function pointer points at current state
+Promises:
+- Calls the function to pointed by the state machine function pointer
+*/
+void UserApp1RunActiveState(void)
+{
+  UserApp1_pfStateMachine();
+} /* end UserApp1RunActiveState */
+
+
+/*------------------------------------------------------------------------------------------------------------------*/
+/*! @privatesection */                                                                                            
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+/**********************************************************************************************************************
+State Machine Function Definitions
+**********************************************************************************************************************/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/* What does this state do? */
+
+
+     
+
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* Handle an error */
 static void UserApp1SM_Error(void)          
