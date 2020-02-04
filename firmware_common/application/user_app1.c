@@ -50,14 +50,14 @@ static fnCode_type UserApp1_pfStateMachine;               /*!< @brief The state 
 //static u32 UserApp1_u32Timeout;                           /*!< @brief Timeout counter used across states */
 static void ChooseGame(void);
 static void Startup(void);
+static void Game0(void);
 static void Game1(void);
 static void Game2(void);
 static void Game3(void);
-static void Game4(void);
 
 //Put global veribals here
-u32 TimePressFirst = 0; //Stores the
-u32 numPressSecond = 0;
+u32 TimePressFirst = 0; //Stores the First button press to help genertate a "random number"
+u32 TimePressSecond = 0;
 
 void UserApp1Initialize(void)
 {
@@ -95,33 +95,21 @@ static void Startup(void) //start up
     TimePressFirst = G_u32SystemTime1ms;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON0);
-    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
-    LcdMessage(LINE2_START_ADDR, "0");
-    LcdMessage(LINE2_START_ADDR + 6, "1");
-    LcdMessage(LINE2_START_ADDR + 13, "2");
-    LcdMessage(LINE2_END_ADDR, "3");
+    
   }
   else if (WasButtonPressed(BUTTON1))
   {
     TimePressFirst = G_u32SystemTime1ms + 250;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON1);
-    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
-    LcdMessage(LINE2_START_ADDR, "0");
-    LcdMessage(LINE2_START_ADDR + 6, "1");
-    LcdMessage(LINE2_START_ADDR + 13, "2");
-    LcdMessage(LINE2_END_ADDR, "3");
+    
   }
   else if (WasButtonPressed(BUTTON2))
   {
     TimePressFirst = G_u32SystemTime1ms + 500;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON2);
-    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
-    LcdMessage(LINE2_START_ADDR, "0");
-    LcdMessage(LINE2_START_ADDR + 6, "1");
-    LcdMessage(LINE2_START_ADDR + 13, "2");
-    LcdMessage(LINE2_END_ADDR, "3");
+    
   }
      
   else if (WasButtonPressed(BUTTON3))
@@ -129,79 +117,160 @@ static void Startup(void) //start up
     TimePressFirst = G_u32SystemTime1ms + 750;
     UserApp1_pfStateMachine = ChooseGame;
     ButtonAcknowledge(BUTTON3);
-    LcdMessage(LINE1_START_ADDR, "Select a Game   "); //i can't seem to change the display
-    LcdMessage(LINE2_START_ADDR, "0");
-    LcdMessage(LINE2_START_ADDR + 6, "1");
-    LcdMessage(LINE2_START_ADDR + 13, "2");
-    LcdMessage(LINE2_END_ADDR, "3");
+    
   }
 }
 
 static void ChooseGame(void)
 {
-  static int button0press = 0;
-  LedOn(GREEN);//testing
-  LedOff(ORANGE);//testing
-  LedOff(WHITE);//testing
-  if (WasButtonPressed(BUTTON0) || button0press) //this is a submenu
+  static int buttonPress = -1; 
+  /*buttonPress will have the values
+    -2 which means "waiting for button input"
+    -1 which means "display the main menu"
+    0 which means "display Game0 menu"
+    1 which means "display Game1 menu"
+    2 which means "display Game2 menu"
+    3 which means "display Game3 menu"
+  */
+  if (buttonPress == -1)
   {
-    button0press = 1;
-    ButtonAcknowledge(BUTTON0);
-    TimePressFirst *= (G_u32SystemTime1ms % 100);
-    LcdMessage(LINE1_START_ADDR, "Hangman      ");
-    LcdMessage(LINE2_START_ADDR, "Start        ");
-    LcdMessage(LINE2_START_ADDR + 13, "Back");
+    LcdMessage(LINE1_START_ADDR, "Select a Game   ");
+    LcdMessage(LINE2_START_ADDR, "0    ");
+    LcdMessage(LINE2_START_ADDR + 6, "1");
+    LcdMessage(LINE2_START_ADDR + 13, "2");
+    LcdMessage(LINE2_START_ADDR + 16, "   3");
+    buttonPress = -2;
+  }
+  if (buttonPress == -2 && WasButtonPressed(BUTTON0) || buttonPress == 0) //this is a submenu//could turn this into a funciton
+  {
     if (WasButtonPressed(BUTTON0))
     {
-      UserApp1_pfStateMachine = Game1;  //acivates the game
+      LcdMessage(LINE1_START_ADDR, "Hangman      ");
+      LcdMessage(LINE2_START_ADDR, "Start         ");
+      LcdMessage(LINE2_START_ADDR + 16, "Back");
+    }
+    buttonPress = 0;
+    ButtonAcknowledge(BUTTON0);
+    TimePressFirst *= (G_u32SystemTime1ms % 100);
+    if (WasButtonPressed(BUTTON0))
+    {
+      UserApp1_pfStateMachine = Game0;  //acivates the game //doesn't seem to want to activate
       ButtonAcknowledge(BUTTON0);
     }
     else if (WasButtonPressed(BUTTON3)) //quits the sub menu
     {
-      button0press = 0;
+      buttonPress = -1;
       ButtonAcknowledge(BUTTON3);
     }
   }
+  if (buttonPress == -2 && WasButtonPressed(BUTTON1) || buttonPress == 1) //this is a submenu//could turn this into a funciton
+  {
+    if (WasButtonPressed(BUTTON1))
+    {
+      LcdMessage(LINE1_START_ADDR, "Game1?        ");
+      LcdMessage(LINE2_START_ADDR, "Start         ");
+      LcdMessage(LINE2_START_ADDR + 16, "Back");
+    }
+    buttonPress = 1;
+    ButtonAcknowledge(BUTTON1);
+    TimePressFirst *= (G_u32SystemTime1ms % 75);
+    if (WasButtonPressed(BUTTON0))
+    {
+      UserApp1_pfStateMachine = Game1;  //acivates the game
+      ButtonAcknowledge(BUTTON1);
+    }
+    else if (WasButtonPressed(BUTTON3)) //quits the sub menu
+    {
+      buttonPress = -1;
+      ButtonAcknowledge(BUTTON3);
+    }
+  }
+  if (buttonPress == -2 && WasButtonPressed(BUTTON2) || buttonPress == 2) //this is a submenu//could turn this into a funciton
+  {
+    if (WasButtonPressed(BUTTON2))
+    {
+      LcdMessage(LINE1_START_ADDR, "Game2?       ");
+      LcdMessage(LINE2_START_ADDR, "Start         ");
+      LcdMessage(LINE2_START_ADDR + 16, "Back");
+    }
+    buttonPress = 2;
+    ButtonAcknowledge(BUTTON2);
+    TimePressFirst *= (G_u32SystemTime1ms % 80);
+    if (WasButtonPressed(BUTTON0))
+    {
+      UserApp1_pfStateMachine = Game2;  //acivates the game
+      ButtonAcknowledge(BUTTON0);
+    }
+    else if (WasButtonPressed(BUTTON3)) //quits the sub menu
+    {
+      buttonPress = -1;
+      ButtonAcknowledge(BUTTON3);
+    }
+  }
+  if (buttonPress == -2 && WasButtonPressed(BUTTON3) || buttonPress == 3) //this is a submenu//could turn this into a funciton
+  {
+    if (WasButtonPressed(BUTTON3))
+    {
+      LcdMessage(LINE1_START_ADDR, "Game3?       ");
+      LcdMessage(LINE2_START_ADDR, "Start         ");
+      LcdMessage(LINE2_START_ADDR + 16, "Back");
+    }
+    buttonPress = 3;
+    ButtonAcknowledge(BUTTON3);
+    TimePressFirst *= (G_u32SystemTime1ms % 90);
+    if (WasButtonPressed(BUTTON0))
+    {
+      UserApp1_pfStateMachine = Game3;  //acivates the game
+      ButtonAcknowledge(BUTTON0);
+    }
+    else if (WasButtonPressed(BUTTON3)) //quits the sub menu
+    {
+      buttonPress = -1;
+      ButtonAcknowledge(BUTTON3);
+    }
+  }
+  /*
   else if (WasButtonPressed(BUTTON1))
   {
     TimePressFirst *= (G_u32SystemTime1ms % 75);
-    UserApp1_pfStateMachine = Game2;
+    UserApp1_pfStateMachine = Game1;
     ButtonAcknowledge(BUTTON1);
   }
   else if (WasButtonPressed(BUTTON2))
   {
     TimePressFirst *= (G_u32SystemTime1ms % 80);
-    UserApp1_pfStateMachine = Game3;
+    UserApp1_pfStateMachine = Game2;
     ButtonAcknowledge(BUTTON2);
   }
   else if (WasButtonPressed(BUTTON3))
   {
     TimePressFirst *= (G_u32SystemTime1ms % 90);
-    UserApp1_pfStateMachine = Game4;
+    UserApp1_pfStateMachine = Game3;
     ButtonAcknowledge(BUTTON3);
   }
+  */
+}
+
+static void Game0(void)
+{
+  LcdMessage(LINE1_START_ADDR, "Game0        ");
+  LedOn(RED);
 }
 
 static void Game1(void)
 {
   LcdMessage(LINE1_START_ADDR, "Game1        ");
-  LedOn(RED);
+  LedOn(WHITE);
 }
 
 static void Game2(void)
 {
   LcdMessage(LINE1_START_ADDR, "Game2        ");
-  LedOn(WHITE);
+  LedOn(CYAN);
 }
-
 static void Game3(void)
 {
   LcdMessage(LINE1_START_ADDR, "Game3        ");
-  LedOn(CYAN);
-}
-static void Game4(void)
-{
-  LcdMessage(LINE1_START_ADDR, "Game4        ");
   LedOn(YELLOW);
 }
   
