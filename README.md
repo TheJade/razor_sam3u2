@@ -14,5 +14,6 @@ Returns:
   Need to do research if it changes the origonal seed too.
   
 Research Links:
-  https://en.wikipedia.org/wiki/Pseudorandom_number_generator
+  Basics: https://en.wikipedia.org/wiki/Pseudorandom_number_generator
+  Adavanced Method, very mathy: https://towardsdatascience.com/building-a-pseudorandom-number-generator-9bc37d3a87d5
   
