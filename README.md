@@ -1,6 +1,4 @@
-# razor_sam3u2
-New Razor_Atmel based on EiE Book firmware
-
+#MasterForGames
 Description:
   Basic menu system
   
