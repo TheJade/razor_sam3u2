@@ -32,6 +32,9 @@ static fnCode_type UserApp2_pfStateMachine;               /*!< @brief The state 
 
 void TestFunction2(void);// To be removed just an example of using a fuction from another file
 
+struct xorwow_state;
+
+u32 GeneratedNumber(struct xorwow_state *state);
 
 
 //store the functions here
@@ -41,6 +44,8 @@ void TestFunction2(void){// To be removed just an example of using a fuction fro
   LedOn(RED);
   return;
 }
+
+
 
 
 

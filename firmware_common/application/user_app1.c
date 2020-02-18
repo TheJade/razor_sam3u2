@@ -25,14 +25,24 @@ static void MainState(void);
 //--------------------------------------put--the--version--code--here----------------------------------------------------
 //new initialized states:
 
-void TestFunction2(void);// To be removed just an example of using a fuction from another filej
-void TestFunction3(void);// To be removed just an example of using a fuction from another filej
+void TestFunction2(void);// To be removed just an example of using a fuction from another file
+void TestFunction3(void);// To be removed just an example of using a fuction from another file
+
+struct xorwow_state;
+
+u32 GeneratedNumber(struct xorwow_state *state);
+
+
 
 //-----------------------------------------------------------------------------------------------------------------------
 
 //Put global veribals here
-u32 G_u32Seed = 0; //Stores the First button press to help genertate a "random number"
-u32 TimePressSecond = 0;
+
+//Structures here
+struct xorwow_state{  //stores the values for the Random Number Generator
+  u32 a, b, c, d;
+  u32 counter;
+}seed;
 
 void UserApp1Initialize(void)
 {
@@ -51,6 +61,12 @@ void UserApp1Initialize(void)
   
   TestFunction2();// To be removed just an example of using a fuction from another file
   TestFunction3();// To be removed just an example of using a fuction from another file
+
+  //initializes the seeds so that they have some values will be reassigned later
+  seed.a = 1714118992; //Stores the First button press to help genertate a "random number"
+  seed.b = 2120275109; //random number I grabbed
+  seed.c = 1704633538;  //another random number I grabbed
+  seed.d = 1665948465; //last random number I grabbed
   
   
   if( 1 )
@@ -76,21 +92,21 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 
   if (WasButtonPressed(BUTTON0))
   {
-    G_u32Seed = G_u32SystemTime1ms;
+    seed.a = G_u32SystemTime1ms;
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON0);
     
   }
   else if (WasButtonPressed(BUTTON1))
   {
-    G_u32Seed = G_u32SystemTime1ms + 250;
+    seed.b = G_u32SystemTime1ms;
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON1);
     
   }
   else if (WasButtonPressed(BUTTON2))
   {
-    G_u32Seed = G_u32SystemTime1ms + 500;
+    seed.c = G_u32SystemTime1ms;
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON2);
     
@@ -98,7 +114,7 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
      
   else if (WasButtonPressed(BUTTON3))
   {
-    G_u32Seed = G_u32SystemTime1ms + 750;
+    seed.d = G_u32SystemTime1ms;
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON3);
     
@@ -108,6 +124,14 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 static void MainState(void)
 {
   LedOn(GREEN); //to indicate the MainState is being run
+
+  u32 GenNum = GeneratedNumber(&seed);
+  char result[10];      //32 "bit" size
+  sprintf(result, "%d", GenNum);  //convets an int into a string (should work)          //JUST NEED TO FIGURE OUT THIS LINE
+  LcdMessage(LINE1_START_ADDR, result); //may need to do some formatting for this
+
+
+
 }
 //-----------------------------------------------------------------------------------------------------------------------
 
@@ -122,3 +146,25 @@ static void UserApp1SM_Error(void)
   LedOn(LCD_RED);
 } /* end UserApp1SM_Error() */
 
+
+//------------------------------------Functions---------------------------------------------------------------------------
+
+//code adapeted from the XorShift method of psuedorandom number genertation (PRNG)
+u32 GeneratedNumber(struct xorwow_state *state)
+{
+	/* Algorithm "xorwow" from p. 5 of Marsaglia, "Xorshift RNGs" */
+	u32 t = state->d;
+
+	u32 const s = state->a;
+	state->d = state->c;
+	state->c = state->b;
+	state->b = s;
+
+	t ^= t >> 2;
+	t ^= t << 1;
+	t ^= s ^ (s << 4);
+	state->a = t;
+
+	state->counter += 362437;
+	return t + state->counter;
+}
