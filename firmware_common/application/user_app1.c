@@ -1,7 +1,7 @@
 //simple master for the games
 
 //version: LABEL_THE_REPOSITORY
-
+#include <stdio.h>
 #include "configuration.h"
 
 //Global variable definitions with scope across entire project.
@@ -40,8 +40,8 @@ u32 GeneratedNumber(struct xorwow_state *state);
 
 //Structures here
 struct xorwow_state{  //stores the values for the Random Number Generator
-  u32 a, b, c, d;
-  u32 counter;
+  u8 a, b, c, d;
+  u8 counter;
 }seed;
 
 void UserApp1Initialize(void)
@@ -63,7 +63,7 @@ void UserApp1Initialize(void)
   TestFunction3();// To be removed just an example of using a fuction from another file
 
   //initializes the seeds so that they have some values will be reassigned later
-  seed.a = 1714118992; //Stores the First button press to help genertate a "random number"
+  seed.a = 1714118792; //Stores the First button press to help genertate a "random number"
   seed.b = 2120275109; //random number I grabbed
   seed.c = 1704633538;  //another random number I grabbed
   seed.d = 1665948465; //last random number I grabbed
@@ -124,11 +124,18 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 static void MainState(void)
 {
   LedOn(GREEN); //to indicate the MainState is being run
-
-  u32 GenNum = GeneratedNumber(&seed);
-  char result[10];      //32 "bit" size
-  sprintf(result, "%d", GenNum);  //convets an int into a string (should work)          //JUST NEED TO FIGURE OUT THIS LINE
-  LcdMessage(LINE1_START_ADDR, result); //may need to do some formatting for this
+  static int x = 0;
+  if (x == 0)
+  {
+    
+    LcdMessage(LINE1_START_ADDR, "                    ");
+    LcdMessage(LINE2_START_ADDR, "                    ");
+    u8 GenNum = GeneratedNumber(&seed);
+   
+    LcdMessage(LINE1_START_ADDR, &GenNum); //may need to do some formatting for this
+    LcdMessage(LINE2_START_ADDR, &seed.a); //may need to do some formatting for this
+    x = 1;
+  }
 
 
 
