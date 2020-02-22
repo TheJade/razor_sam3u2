@@ -32,7 +32,7 @@ struct xorwow_state;
 
 u32 GeneratedNumber(struct xorwow_state *state);
 
-
+void convertToString( u8 *word, u32 LocalSeed);
 
 //-----------------------------------------------------------------------------------------------------------------------
 
@@ -123,17 +123,21 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 //--------------------------------------put--the--version--code--here----------------------------------------------------
 static void MainState(void)
 {
-  LedOn(GREEN); //to indicate the MainState is being run
   static int x = 0;
-  if (x == 0)
+  LedOn(GREEN); //to indicate the MainState is being run
+  if (x==0)
   {
+    
     
     LcdMessage(LINE1_START_ADDR, "                    ");
     LcdMessage(LINE2_START_ADDR, "                    ");
-    u8 GenNum = GeneratedNumber(&seed);
-   
-    LcdMessage(LINE1_START_ADDR, &GenNum); //may need to do some formatting for this
-    LcdMessage(LINE2_START_ADDR, &seed.a); //may need to do some formatting for this
+    u32 GenNum = GeneratedNumber(&seed); //calls the random number generator algorithm
+    u8 GN[7];
+    u8 *pGN;
+    convertToString(pGN, GenNum);
+    
+    LcdMessage(LINE1_START_ADDR, GN); //may need to do some formatting for this
+    ButtonAcknowledge(BUTTON0);
     x = 1;
   }
 
@@ -174,4 +178,38 @@ u32 GeneratedNumber(struct xorwow_state *state)
 
 	state->counter += 362437;
 	return t + state->counter;
+}
+
+void convertToString( u8 *word, u32 LocalSeed)
+{
+  int digit; //holds the current digit of the seed
+
+  digit = LocalSeed / 100000000;
+  printf ("%d\n", digit);
+  LocalSeed -= digit * 100000000;
+  digit += 30;
+  word[0] = digit / 10;
+  word[1] = digit % 10;
+
+  digit = LocalSeed / 10000000;
+  printf ("%d\n", digit);
+  LocalSeed -= digit * 10000000;
+  digit += 30;
+  word[2] = digit / 10;
+  word[3] = digit % 10;
+
+  digit = LocalSeed / 1000000;
+  printf ("%d\n", digit);
+  LocalSeed -= digit * 1000000;
+  digit += 30;
+  word[4] = digit / 10;
+  word[5] = digit % 10;
+
+  digit = LocalSeed / 100000;
+  printf ("%d\n", digit);
+  LocalSeed -= digit * 100000;
+  digit += 30;
+  word[6] = digit / 10;
+  word[7] = digit % 10;
+
 }
