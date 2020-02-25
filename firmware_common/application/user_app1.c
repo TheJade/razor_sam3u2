@@ -13,7 +13,33 @@
   S = spades
 
   Q = quit to save the game (feature to add)
-Deal:
+CPU Turn:
+    ______________________
+    |Pot:380        AC 2H|                 
+    |   CPU1: Checks     |                    
+    ______________________
+    O      O       O     O
+    ______________________
+    |7H 8S|      7S AC 2H|                 
+    |   CPU1: Bets 20    |                    
+    ______________________
+    O      O       O     O
+    ______________________
+    |7H 8S|      7S AC 2H|    //may reconsider this one             
+    |   CPU2: Matches    |    //matches is an odd word
+    ______________________
+    O      O       O     O
+    ______________________
+    |7H 8S|8D 9H 7S AC 2H|                 
+    |   CPU2: Folds      |                    
+    ______________________
+    O      O       O     O
+Player Turn:
+    ______________________
+    |7H 8S|              |                 
+    |Check  Bet   Fold  Q|                    
+    ______________________
+    O      O       O     O
     ______________________
     |7H 8S|      7S AC 2H|                 
     |Check  Bet   Fold  Q|                    
@@ -21,7 +47,7 @@ Deal:
     O      O       O     O
     ______________________
     |7H 8S|   9H 7S AC 2H|                 
-    |Check  Bet   Fold  Q|                    
+    |Match  Bet   Fold  Q|                    
     ______________________
     O      O       O     O
     ______________________
@@ -32,13 +58,13 @@ Deal:
 BetSubmenu:
     I think the top one looks better with the whole back word
     ______________________
-    |Pot: 5320   Bet: 350|             
-    |Up  Down  Enter Back|                    
+    |Chips: 5089 Bet: 350|    //adds 10 to the bet for each up
+    |Up  Down  Enter Back|    //if hold goes up quickly           
     ______________________
     O      O       O     O
     ______________________
-    |Pot: 5320   Bet: 350|             
-    |Up  Down  Enter    B|                    
+    |Pot: 5320   Bet: 350|    //I don't know if we need the Pot    
+    |Up  Down  Enter    B|    //should show the pot somewhere else              
     ______________________
     O      O       O     O
 
@@ -50,7 +76,7 @@ End of round (show hands):
     ______________________
     O      O       O     O
     ______________________
-    |   JD 9H 7S AC 2H   |  //river at top           
+    |   JD 9H 7S AC 2H   |  //river at top //animate it   
     |      |7H 8S|       |  //winner hand more to middle            
     ______________________
     O      O       O     O
