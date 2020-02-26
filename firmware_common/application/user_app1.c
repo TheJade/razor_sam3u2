@@ -63,10 +63,10 @@ void UserApp1Initialize(void)
   TestFunction3();// To be removed just an example of using a fuction from another file
 
   //initializes the seeds so that they have some values will be reassigned later
-  seed.a = 1714118792; //Stores the First button press to help genertate a "random number"
-  seed.b = 2120275109; //random number I grabbed
-  seed.c = 1704633538;  //another random number I grabbed
-  seed.d = 1665948465; //last random number I grabbed
+  seed.a = 78; //Stores the First button press to help genertate a "random number"
+  seed.b = 212; //random number I grabbed
+  seed.c = 125;  //another random number I grabbed
+  seed.d = 12; //last random number I grabbed
   
   
   if( 1 )
@@ -92,21 +92,21 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 
   if (WasButtonPressed(BUTTON0))
   {
-    seed.a = G_u32SystemTime1ms;
+    seed.a = G_u32SystemTime1ms % 256; //cuz max u8 size is 256
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON0);
     
   }
   else if (WasButtonPressed(BUTTON1))
   {
-    seed.b = G_u32SystemTime1ms;
+    seed.b = G_u32SystemTime1ms % 256; //cuz max u8 size is 256
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON1);
     
   }
   else if (WasButtonPressed(BUTTON2))
   {
-    seed.c = G_u32SystemTime1ms;
+    seed.c = G_u32SystemTime1ms % 256; //cuz max u8 size is 256
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON2);
     
@@ -114,7 +114,7 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
      
   else if (WasButtonPressed(BUTTON3))
   {
-    seed.d = G_u32SystemTime1ms;
+    seed.d = G_u32SystemTime1ms % 256; //cuz max u8 size is 256
     UserApp1_pfStateMachine = MainState;
     ButtonAcknowledge(BUTTON3);
     
