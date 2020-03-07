@@ -6,6 +6,14 @@
 //  check will cause no bet and the player turn is over
 //  bet will have a submenu/suboptions, containing buttons of less, more, all in
 //  fold will continue the round but player is out
+
+/*
+terms to control f so to finish all the loose ends:
+end of round //is what should be set when round ends
+
+*/
+
+
 /*example of UI
   H = hearts
   C = clubs
@@ -148,29 +156,30 @@ struct xorwow_state{  //stores the values for the Random Number Generator
   u32 counter;
 }seed;
 
+//may have to be declared static so value won't change don't know at this point if it has to be
 struct character{ // either human or bot the being has, gets initialized in Initialize state
   //could reduce the number of variables but for easy of read, I will keep many variabels for now
-  int chips;  //chips the character has should be greater then -1
+  int chips = 250;  //chips the character has should be greater then -1
   u8 hand0; //first card in the character's hand, has integer value corresponting to a certain card
   u8 hand1; //first card in the character's hand, has integer value corresponting to a certain card
 
   u8 fold;  // is 1 if the player hasn't folded, is 0 if the player has folded
-  u8 human; // is 1 if the player is human, is 2 for tigers, is 0 otherwise
+  u8 human = 1; // is 1 if the player is human, is 2 for tigers, is 0 otherwise
       // helps determine if the ai should play the character
 
   //player name I could also add
 
-}
+};
 
-struct GameStates{  
-  u8 players; //number of player in the game
+struct GameStates{
+  u8 players_delt = 0; // helps in Generating the Cards state
+  u8 max_players = 2; //number of player in the game should be setable
   u8 river0;  //holds the first card placed in the river
   u8 river1;  
   u8 river2;
   u8 river3;
   u8 river4;  //holds the last card placed in the river
-
-}
+}GameState;
 
 
 
@@ -219,6 +228,8 @@ void UserApp1RunActiveState(void)//runs the state that  UserApp1_pfStateMachine(
 
 static void Startup(void) //basic menu system to generate the seed (at this point the seed is not that complicated)
 {
+  struct character Player1;
+  struct character Player2;
 
   if (WasButtonPressed(BUTTON0))
   {
@@ -257,23 +268,86 @@ static void MainState(void)
   UserApp1_pfStateMachine = GenerateCards;
 }
 
-static void GenerateCards(void)
+static void GenerateCards(void) // state
 {
   LedOn(YELLOW);  //just to help indicate the current state
   LedOff(GREEN);
-  u8 GCStartUp = 1;  //should 
+  static char Cards_In_Deck[52];  //syntax i'm not super sure about //should turn all to zeros at end of round
+  /* if the state takes longer then 1ms to run then will have to impliment below and break it over a couple loops
+  static u8 GCStartUp = 1;  //should only loop the below once, should be reset to 1 when leaving this state
 
   if (GCStartUP == 1) //runs once when the GeneratedCards is initalally switched to 
   {
-    LedOff(WHITE);        // should only flash the lights on if they remain on
-    LedOff(WHITE + 1);    // it indicates that that this keeps looping which it shouldn't
-    LedOff(WHITE + 2); 
-    LedOn(WHITE); //should 
-    LedOn(WHITE + 1);
-    LedOn(WHITE + 2); //
+    TestLoop(); // should flash the LEDs if the function loops
+
+    GCStartUp = 0;  //
+  }
+*/
+  static u8 first_runGC = 1;  // should be changed back to 1 at last run of state
+  if (first_runGC)  // this runs on start up once then the program continues
+  {
+    GameState.river0 = GeneratedNumber(seed) % 52;
+    Cards_In_Deck[GameState.river0] = "1";
+    GameState.river1 = GeneratedNumber(seed) % 52;
+    first_runGC = 0;
+    //runs once to start the state
+  }
+  if (players_delt == 0)  // generates the river  // could probably make this much nicer  // probably just build a function
+  {
+    if (Cards_In_Deck[GameState.river1] != "1")
+    {
+      Cards_In_Deck[GameState.river1] = "1";
+      GameState.river2 = GeneratedNumber(seed) % 52;
+      if (Cards_In_Deck[GameState.river2] != "1")
+      {
+        Cards_In_Deck[GameState.river2] = "1";
+        GameState.river3 = GeneratedNumber(seed) % 52;
+        if (Cards_In_Deck[GameState.river3] != "1")
+        {
+          Cards_In_Deck[GameState.river3] = "1";
+          GameState.river4 = GeneratedNumber(seed) % 52;
+          if (Cards_In_Deck[GameState.river4] != "1")
+          {
+            Cards_In_Deck[GameState.river4] = "1";
+            players_delt == 1;
+            // ends the large if loop now goes to generate the player hands
+          }
+          else 
+          {
+            GameState.river4 = GeneratedNumber(seed) % 52;  //if care 1 of the river is equal to card 0
+          }
+        }
+        else 
+        {
+          GameState.river3 = GeneratedNumber(seed) % 52;  //if care 1 of the river is equal to card 0
+        }
+      }
+      else 
+      {
+        GameState.river2 = GeneratedNumber(seed) % 52;  //if care 2 of the river is equal to card 1
+      }
+    }
+    else 
+    {
+      GameState.river1 = GeneratedNumber(seed) % 52;  //if care 1 of the river is equal to card 0
+    }
+
 
   }
-
+/*    // need to build the character structures in order to build this part below
+  if (players_delt == 1 && players_delt <= max_players) // this part is not done yet
+  {
+    if (Cards_In_Deck[GameState.river4] != "1")
+    {
+      Cards_In_Deck[GameState.river4] = "1";
+      // ends the large if loop now goes to generate the player hands
+    }
+    else 
+    {
+      GameState.river4 = GeneratedNumber(seed) % 52;  //if care 1 of the river is equal to card 0
+    }
+  }
+*/
 
 }
 //-----------------------------------------------------------------------------------------------------------------------
@@ -315,8 +389,8 @@ void TestLoop(void) // function built to test if there is a continue loop
 {
   // turns on all Leds then turns them off
   //also displays message to the display to indicate not loop
-  static u32 TestLoopStartTime = G_u32SystemTime1ms % 500;
-  if (G_u32SystemTime1ms % 500 => TestLoopStartTime)
+  static TestLoopStart = 1; // so that the test doesn't start on
+  if (!TestLoopStart && G_u32SystemTime1ms % 500 => 250)
   {
     LedOn(WHITE);
     LedOn(WHITE+1);
@@ -326,6 +400,7 @@ void TestLoop(void) // function built to test if there is a continue loop
     LedOn(WHITE+5);
     LedOn(WHITE+6);
     LedOn(WHITE+7);
+    TestLoopStart = 0;
   }
   else
   {
