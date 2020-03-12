@@ -172,7 +172,7 @@ struct character{ // either human or bot the being has, gets initialized in Init
 };
 
 struct GameStates{
-  u8 players_delt = 0; // helps in Generating the Cards state
+  //don't need this line//u8 players_delt = 0; // helps in Generating the Cards state
   u8 max_players = 2; //number of player in the game should be setable
   u8 river0;  //holds the first card placed in the river
   u8 river1;  
@@ -264,15 +264,82 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 //--------------------------------------put--the--version--code--here----------------------------------------------------
 static void MainState(void)
 {
-  LedOn(GREEN); //to indicate the MainState is being run
+  static u8 *deck[52]; // will be assigned values in GenerateCards state
+  LedOn(GREEN); // to indicate the MainState is being run
   UserApp1_pfStateMachine = GenerateCards;
 }
 
-static void GenerateCards(void) // state
+static void GenerateCards(void) // state // assumes that the round is done and new cards to be generated
 {
   LedOn(YELLOW);  //just to help indicate the current state
   LedOff(GREEN);
-  static char Cards_In_Deck[52];  //syntax i'm not super sure about //should turn all to zeros at end of round
+  static u8 GCRun = 0; //should be 0 if first run of state
+  if (GCRun == 0) // will generate the river then increment GCRun
+  {
+    *deck[] = { // resets the deck values I hope
+          "2D", //index is 0
+          "3D",
+          "4D", //called by u8 *CardDisplay = deck[2];
+          "5D",         //then LcdMessage(LINE2_START_ADDR, CardDisplay);
+          "6D",
+          "7D",
+          "8D",
+          "9D",
+          "JD",
+          "QD",
+          "KD",
+          "AD",
+          
+          "2C",
+          "3C",
+          "4C",
+          "5C",
+          "6C",
+          "7C",
+          "8C",
+          "9C",
+          "JC",
+          "QC",
+          "KC",
+          "AC",
+          
+          "2S",
+          "3S",
+          "4S",
+          "5S",
+          "6S",
+          "7S",
+          "8S",
+          "9S",
+          "JS",
+          "QS",
+          "KS",
+          "AS",
+          
+          "2H",
+          "3H",
+          "4H",
+          "5H",
+          "6H",
+          "7H",
+          "8H",
+          "9H",
+          "JH",
+          "QH",
+          "KH",
+          "AH"
+    };
+    int delt = 1; // not sure if this is the best way to do it
+    GameState.river0 = GeneratedNumber(seed) % 52;
+    Cards_In_Deck[GameState.river0] = 0; // i think it will be a "/0" char
+    if (delt == 1)
+    {
+      
+    }
+    Cards_In_Deck[GameState.river0] = 0; // i think it will be a "/0" char
+    
+    GCRun++;
+  }
   /* if the state takes longer then 1ms to run then will have to impliment below and break it over a couple loops
   static u8 GCStartUp = 1;  //should only loop the below once, should be reset to 1 when leaving this state
 
@@ -283,6 +350,7 @@ static void GenerateCards(void) // state
     GCStartUp = 0;  //
   }
 */
+/*
   static u8 first_runGC = 1;  // should be changed back to 1 at last run of state
   if (first_runGC)  // this runs on start up once then the program continues
   {
@@ -334,6 +402,7 @@ static void GenerateCards(void) // state
 
 
   }
+  */
 /*    // need to build the character structures in order to build this part below
   if (players_delt == 1 && players_delt <= max_players) // this part is not done yet
   {
@@ -385,7 +454,7 @@ u32 GeneratedNumber(struct xorwow_state *state)
 	return t + state->counter;
 }
 
-void TestLoop(void) // function built to test if there is a continue loop
+void TestLoop(void) // not tested yet, function built to test if there is a continue loop
 {
   // turns on all Leds then turns them off
   //also displays message to the display to indicate not loop
