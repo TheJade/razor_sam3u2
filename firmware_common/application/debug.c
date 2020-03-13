@@ -178,7 +178,7 @@ u32 DebugPrintf(u8* u8String_)
     u32Size++;
     pu8Parser++;
   }
-    
+  int y = 10;
   return( UartWriteData(Debug_Uart, u32Size, u8String_) );
  
 } /* end DebugPrintf() */
@@ -272,6 +272,7 @@ void DebugPrintNumber(u32 u32Number_)
   u32Temp = 9;
   for(u8 index = u8CharCount; index != 0; index--)
   {
+    int y ;
     pu8Data[index - 1] = au8AsciiNumber[u32Temp--];
   }
     
