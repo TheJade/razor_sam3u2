@@ -21,7 +21,8 @@ static fnCode_type UserApp1_pfStateMachine;               /*!< @brief The state 
 
 //states initialized
 static void Startup(void);
-static void MainState(void);
+static void MainState(void);    // is the main menu the user interacts with on their turn
+static void Bet(void);  // is a sub menu of MainState contols the Bets a user does
 static void GenerateCards(void);        // fills the structures with random cards, to be run at begginning of each round
 //--------------------------------------put--the--version--code--here----------------------------------------------------
 //new initialized states:
@@ -63,6 +64,7 @@ static struct character Player2;
 struct GameStates{
   //don't need this line//u8 players_delt = 0; // helps in Generating the Cards state
   u8 max_players; //number of player in the game should be setable
+  u8 player_turn; // who's turn the game is currently on
   u8 river0;  //holds the first card placed in the river
   u8 river1;  
   u8 river2;
@@ -74,6 +76,7 @@ struct GameStates{
 
 //Put global veribals here
 static int x = 1;       // is used in the main state
+static int y = 1;       // used in Bet state
 
 void UserApp1Initialize(void)
 {
@@ -270,6 +273,27 @@ static void MainState(void)
 
 
 
+}
+
+static void Bet(void)       // this state will control the bet menu     //y is the control varilble here
+{
+  /* display
+  BetSubmenu:
+    ______________________
+    |Chips: 5089 Bet: 350|    //adds 10 to the bet for each up
+    |Up  Down  Enter Back|    //if hold goes up quickly           
+    ______________________
+    O      O       O     O
+  */
+  //prologue
+  if (y == 1)
+  {
+    LcdMessage(LINE1_START_ADDR, "Chips:      Bet:    ");       // 20 chars long, clears the dipslay
+    LcdMessage(LINE2_START_ADDR, "Up  Down  Enter Back");       // 20 chars long, i'm pretty sure
+    displayPlayerChips();       // since all values to be used a global we don't need to have any parameters
+    y = 2;
+  }
+  
 }
 
 static void GenerateCards(void)

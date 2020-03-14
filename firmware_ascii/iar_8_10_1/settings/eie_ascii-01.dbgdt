@@ -168,7 +168,7 @@
                     <item>G_u32SystemFlags</item>
                     <item>G_u32SystemTime1ms</item>
                     <item>G_u32SystemTime1s</item>
-                    <item />
+                    <item></item>
                 </expressions>
                 <col-names>
                     <item>Expression</item>
@@ -335,7 +335,7 @@
                 <RecentlyUsedMenus>1</RecentlyUsedMenus>
                 <MenuShadows>1</MenuShadows>
                 <ShowAllMenusAfterDelay>1</ShowAllMenusAfterDelay>
-                <CommandsUsage>290200004D0040E10000010000001386000004000000048400000600000057860000010000000880000001000000018400000100000008B0000001000000599200000100000026810000020000001581000004000000108600008A000000488100000200000029E1000002000000AF0600000900000023920000020000000F8100000100000004E10000010000000D80000001000000EA800000010000001D810000010000000C8100000600000007860000010000001982000002000000048600000100000056860000C20000000384000002000000168200000400000017810000040000009A86000002000000558400004000000007B00000010000000084000002000000808C00000200000026D500000100000014810000050000000E84000001000000008100000B0000000C860000010000005E8600000200000003E10000010000001F8100003200000009860000010000001A860000020000000E81000001000000E9800000020000000B810000020000008E8600000100000000E100000100000006860000010000005D8400000100000041E100000100000005840000010000001882000003000000148600002600000009800000010000000CB0000001000000588600000100000009B0000001000000239600000300000002840000020000000581000001000000118600000400000055860000010000000086000001000000198F000001000000108400000E000000468100003F000000438100000100000003B0000001000000A1860000030000005D860000010000000D8100000100000035E100000200000024E10000010000000886000001000000E8800000010000000586000001000000</CommandsUsage>
+                <CommandsUsage>280200004D0040E10000010000001386000004000000048400000600000057860000010000000880000001000000018400000100000008B00000010000005992000001000000268100000200000015810000040000001086000089000000488100000200000029E1000002000000AF0600000900000023920000020000000F8100000100000004E10000010000000D80000001000000EA800000010000001D810000010000000C8100000600000007860000010000001982000002000000048600000100000056860000C20000000384000002000000168200000400000017810000040000009A86000002000000558400004000000007B00000010000000084000002000000808C00000200000026D500000100000014810000050000000E84000001000000008100000B0000000C860000010000005E8600000200000003E10000010000001F8100003200000009860000010000001A860000020000000E81000001000000E9800000020000000B810000020000008E8600000100000000E100000100000006860000010000005D8400000100000041E100000100000005840000010000001882000003000000148600002600000009800000010000000CB0000001000000588600000100000009B0000001000000239600000300000002840000020000000581000001000000118600000400000055860000010000000086000001000000198F000001000000108400000E000000468100003F000000438100000100000003B0000001000000A1860000030000005D860000010000000D8100000100000035E100000200000024E10000010000000886000001000000E8800000010000000586000001000000</CommandsUsage>
             </MFCToolBarParameters>
             <CommandManager>
                 <CommandsWithoutImages>0000</CommandsWithoutImages>
@@ -356,11 +356,11 @@
             </BasePane-59393>
             <Pane-34051>
                 <ID>34051</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34051>
@@ -370,21 +370,21 @@
             <IarPane-34051 />
             <Pane-34052>
                 <ID>34052</ID>
-                <RectRecentFloat>DAFEFFFF1B03000010000000F6030000</RectRecentFloat>
-                <RectRecentDocked>040000004A0700007C070000D5070000</RectRecentDocked>
+                <RectRecentFloat>FEF9FFFF1B03000034FBFFFFF6030000</RectRecentFloat>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34052>
             <BasePane-34052>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34052>
             <Pane--1>
                 <ID>4294967295</ID>
-                <RectRecentFloat>000000009B0000008B0100007F070000</RectRecentFloat>
-                <RectRecentDocked>00000000630000008B01000047070000</RectRecentDocked>
+                <RectRecentFloat>000000009B0000003701000066060000</RectRecentFloat>
+                <RectRecentDocked>0000000031000000370100002E060000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -397,7 +397,7 @@
             <Pane-34053>
                 <ID>34053</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000081070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -410,7 +410,7 @@
             <Pane-34063>
                 <ID>34063</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>000000007D070000000F00000A080000</RectRecentDocked>
+                <RectRecentDocked>0000000064060000000F00000A080000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -418,12 +418,12 @@
                 <PinState>0</PinState>
             </Pane-34063>
             <BasePane-34063>
-                <IsVisible>1</IsVisible>
+                <IsVisible>0</IsVisible>
             </BasePane-34063>
             <Pane-34065>
                 <ID>34065</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000081070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -436,7 +436,7 @@
             <Pane-34066>
                 <ID>34066</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000081070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -449,7 +449,7 @@
             <Pane-34067>
                 <ID>34067</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000081070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -462,7 +462,7 @@
             <Pane-34087>
                 <ID>34087</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000081070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -475,7 +475,7 @@
             <Pane-34099>
                 <ID>34099</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000081070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentDocked>04000000680600007C070000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -488,7 +488,7 @@
             <Pane-34075>
                 <ID>34075</ID>
                 <RectRecentFloat>3CFBFFFFE603000072FCFFFFD5040000</RectRecentFloat>
-                <RectRecentDocked>0400000034060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>8807000068060000FC0E0000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -496,12 +496,12 @@
                 <PinState>0</PinState>
             </Pane-34075>
             <BasePane-34075>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34075>
             <Pane-34076>
                 <ID>34076</ID>
                 <RectRecentFloat>3CFBFFFFE603000072FCFFFFD5040000</RectRecentFloat>
-                <RectRecentDocked>0400000034060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>8807000068060000FC0E0000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -515,7 +515,7 @@
             <Pane-34077>
                 <ID>34077</ID>
                 <RectRecentFloat>3CFBFFFFE603000072FCFFFFD5040000</RectRecentFloat>
-                <RectRecentDocked>0400000034060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>8807000068060000FC0E0000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -529,7 +529,7 @@
             <Pane-34078>
                 <ID>34078</ID>
                 <RectRecentFloat>3CFBFFFFE603000072FCFFFFD5040000</RectRecentFloat>
-                <RectRecentDocked>0400000034060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>8807000068060000FC0E0000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -542,29 +542,29 @@
             <IarPane-34078 />
             <Pane-34095>
                 <ID>34095</ID>
-                <RectRecentFloat>DAFEFFFFDB03000010000000B6040000</RectRecentFloat>
-                <RectRecentDocked>880700004A070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentFloat>9BFDFFFFDB030000D1FEFFFFB6040000</RectRecentFloat>
+                <RectRecentDocked>8807000068060000FC0E0000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>8192</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34095>
             <BasePane-34095>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34095>
             <Pane-34064>
                 <ID>34064</ID>
-                <RectRecentFloat>F8FEFFFFF003000010000000A7050000</RectRecentFloat>
-                <RectRecentDocked>880700004A070000FC0E0000D5070000</RectRecentDocked>
+                <RectRecentFloat>B0FDFFFFF0030000C8FEFFFFA7050000</RectRecentFloat>
+                <RectRecentDocked>8807000068060000FC0E0000D5070000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34064>
             <BasePane-34064>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34064>
             <Pane-34054>
                 <ID>34054</ID>
@@ -581,16 +581,16 @@
             </BasePane-34054>
             <Pane-34055>
                 <ID>34055</ID>
-                <RectRecentFloat>F8FEFFFF0D01000010000000C4020000</RectRecentFloat>
-                <RectRecentDocked>6A0D000099000000FC0E000084030000</RectRecentDocked>
+                <RectRecentFloat>4DFEFFFF0D01000065FFFFFFC4020000</RectRecentFloat>
+                <RectRecentDocked>6A0D000099000000FC0E000013030000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34055>
             <BasePane-34055>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34055>
             <IarPane-34055>
                 <col-names>
@@ -605,7 +605,7 @@
             <Pane-34056>
                 <ID>34056</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFF6CF8FFFF37000000</RectRecentFloat>
-                <RectRecentDocked>0400000070060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>040000008F0300005C090000D7030000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -619,7 +619,7 @@
             <Pane-34080>
                 <ID>34080</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000070060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>040000008F0300005C090000D7030000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -632,11 +632,11 @@
             <IarPane-34080 />
             <Pane-34057>
                 <ID>34057</ID>
-                <RectRecentFloat>DAFEFFFF84FFFFFF100000005F000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
                 <RectRecentDocked>000000000000000036010000DB000000</RectRecentDocked>
                 <RecentFrameAlignment>8192</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34057>
@@ -646,11 +646,11 @@
             <IarPane-34057 />
             <Pane-34058>
                 <ID>34058</ID>
-                <RectRecentFloat>DAFEFFFF84FFFFFF100000005F000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
                 <RectRecentDocked>000000004A0200008007000025030000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34058>
@@ -700,11 +700,11 @@
             <IarPane-34061 />
             <Pane-34062>
                 <ID>34062</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34062>
@@ -728,11 +728,11 @@
             <IarPane-34068 />
             <Pane-34069>
                 <ID>34069</ID>
-                <RectRecentFloat>DAFEFFFF84FFFFFF100000005F000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
                 <RectRecentDocked>000000000000000036010000DB000000</RectRecentDocked>
                 <RecentFrameAlignment>8192</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34069>
@@ -770,11 +770,11 @@
             <IarPane-34071 />
             <Pane-34073>
                 <ID>34073</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34073>
@@ -784,11 +784,11 @@
             <IarPane-34073 />
             <Pane-34074>
                 <ID>34074</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34074>
@@ -798,11 +798,11 @@
             <IarPane-34074 />
             <Pane-34079>
                 <ID>34079</ID>
-                <RectRecentFloat>DAFEFFFF84FFFFFF100000005F000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
                 <RectRecentDocked>000000000000000036010000DB000000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34079>
@@ -812,11 +812,11 @@
             <IarPane-34079 />
             <Pane-34081>
                 <ID>34081</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34081>
@@ -826,115 +826,115 @@
             <IarPane-34081 />
             <Pane-34082>
                 <ID>34082</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
-                <RectRecentDocked>6A0D000099000000FC0E000084030000</RectRecentDocked>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
+                <RectRecentDocked>6A0D000099000000FC0E000013030000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34082>
             <BasePane-34082>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34082>
             <Pane-34104>
                 <ID>34104</ID>
                 <RectRecentFloat>2EFFFFFFE5000000460000009C020000</RectRecentFloat>
-                <RectRecentDocked>6A0D000099000000FC0E000084030000</RectRecentDocked>
+                <RectRecentDocked>6A0D000099000000FC0E000013030000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34104>
             <BasePane-34104>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34104>
             <Pane-34105>
                 <ID>34105</ID>
                 <RectRecentFloat>1FFFFFFFD10000003700000088020000</RectRecentFloat>
-                <RectRecentDocked>6A0D000099000000FC0E000084030000</RectRecentDocked>
+                <RectRecentDocked>6A0D000099000000FC0E000013030000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34105>
             <BasePane-34105>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34105>
             <Pane-34091>
                 <ID>34091</ID>
                 <RectRecentFloat>06FFFFFFC80000001E0000007F020000</RectRecentFloat>
-                <RectRecentDocked>6A0D000099000000FC0E000084030000</RectRecentDocked>
+                <RectRecentDocked>6A0D000099000000FC0E000013030000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34091>
             <BasePane-34091>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34091>
             <Pane-34083>
                 <ID>34083</ID>
-                <RectRecentFloat>F8FEFFFFD10100001000000088030000</RectRecentFloat>
-                <RectRecentDocked>6A0D0000F3030000FC0E0000DB060000</RectRecentDocked>
+                <RectRecentFloat>08FEFFFFD101000020FFFFFF88030000</RectRecentFloat>
+                <RectRecentDocked>6A0D000082030000FC0E0000F9050000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34083>
             <BasePane-34083>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34083>
             <Pane-34072>
                 <ID>34072</ID>
                 <RectRecentFloat>18FFFFFFAD0200003000000064040000</RectRecentFloat>
-                <RectRecentDocked>6A0D0000F3030000FC0E0000DB060000</RectRecentDocked>
+                <RectRecentDocked>6A0D000082030000FC0E0000F9050000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34072>
             <BasePane-34072>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34072>
             <Pane-34106>
                 <ID>34106</ID>
                 <RectRecentFloat>3FFFFFFFB4020000570000006B040000</RectRecentFloat>
-                <RectRecentDocked>6A0D0000F3030000FC0E0000DB060000</RectRecentDocked>
+                <RectRecentDocked>6A0D000082030000FC0E0000F9050000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34106>
             <BasePane-34106>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34106>
             <Pane-34107>
                 <ID>34107</ID>
                 <RectRecentFloat>49FFFFFFB5020000610000006C040000</RectRecentFloat>
-                <RectRecentDocked>6A0D0000F3030000FC0E0000DB060000</RectRecentDocked>
+                <RectRecentDocked>6A0D000082030000FC0E0000F9050000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34107>
             <BasePane-34107>
-                <IsVisible>0</IsVisible>
+                <IsVisible>1</IsVisible>
             </BasePane-34107>
             <Pane-34084>
                 <ID>34084</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34084>
@@ -944,11 +944,11 @@
             <IarPane-34084 />
             <Pane-34085>
                 <ID>34085</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34085>
@@ -958,11 +958,11 @@
             <IarPane-34085 />
             <Pane-34086>
                 <ID>34086</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34086>
@@ -1001,7 +1001,7 @@
             <Pane-34090>
                 <ID>34090</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
-                <RectRecentDocked>04000000990000008701000012070000</RectRecentDocked>
+                <RectRecentDocked>040000006700000033010000C7050000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -1014,7 +1014,7 @@
             <Pane-34108>
                 <ID>34108</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
-                <RectRecentDocked>00000000950000008B01000047070000</RectRecentDocked>
+                <RectRecentDocked>0000000063000000370100002E060000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -1022,15 +1022,15 @@
                 <PinState>0</PinState>
             </Pane-34108>
             <BasePane-34108>
-                <IsVisible>1</IsVisible>
+                <IsVisible>0</IsVisible>
             </BasePane-34108>
             <Pane-34092>
                 <ID>34092</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34092>
@@ -1040,11 +1040,11 @@
             <IarPane-34092 />
             <Pane-34093>
                 <ID>34093</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34093>
@@ -1054,11 +1054,11 @@
             <IarPane-34093 />
             <Pane-34094>
                 <ID>34094</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34094>
@@ -1068,11 +1068,11 @@
             <IarPane-34094 />
             <Pane-34096>
                 <ID>34096</ID>
-                <RectRecentFloat>F8FEFFFF84FFFFFF100000003B010000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFB8F7FFFF3B010000</RectRecentFloat>
                 <RectRecentDocked>000000000000000018010000B7010000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34096>
@@ -1082,11 +1082,11 @@
             <IarPane-34096 />
             <Pane-34097>
                 <ID>34097</ID>
-                <RectRecentFloat>44FEFFFF84FFFFFF1000000073000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFF6CF8FFFF73000000</RectRecentFloat>
                 <RectRecentDocked>0000000000000000CC010000EF000000</RectRecentDocked>
                 <RecentFrameAlignment>16384</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34097>
@@ -1096,11 +1096,11 @@
             <IarPane-34097 />
             <Pane-34098>
                 <ID>34098</ID>
-                <RectRecentFloat>44FEFFFF84FFFFFF1000000073000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFF6CF8FFFF73000000</RectRecentFloat>
                 <RectRecentDocked>0000000000000000CC010000EF000000</RectRecentDocked>
                 <RecentFrameAlignment>32768</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34098>
@@ -1163,7 +1163,7 @@
             </BasePane-34103>
             <IarPane-34103 />
             <DockingManager-256>
-                <DockingPaneAndPaneDividers>000000000C000000000000000010000001000000FFFFFFFFFFFFFFFF8B010000630000008F010000470700000100000002000010040000000100000074FDFFFFC60B0000FFFFFFFF020000002A8500003C850000FFFF02000B004354616262656450616E650010000001000000000000009B0000008B0100007F07000000000000630000008B01000047070000000000004010005602000000FFFEFF0E53006F0075007200630065002000420072006F007700730065007200000000002A85000001000000FFFFFFFFFFFFFFFFFFFEFF0957006F0072006B0073007000610063006500010000003C85000001000000FFFFFFFFFFFFFFFF01000000000000000000000000000000000000000000000001000000FFFFFFFF2A85000001000000FFFFFFFF2A850000000000000080000000000000FFFFFFFFFFFFFFFF000000000000000004000000040000000000000001000000040000000100000000000000000000000B85000000000000000000000000000000000000010000000B850000010000000B850000000000000080000000000000FFFFFFFFFFFFFFFF00000000000000000400000004000000000000000100000004000000010000000000000000000000068500000000000000000000000000000000000001000000068500000100000006850000000000000080000001000000FFFFFFFFFFFFFFFF0000000047070000000F00004B070000010000000100001004000000010000009DF9FFFFCC00000000000000000000000000000001000000FFFFFFFF07000000058500000F8500001185000012850000138500002785000033850000018000800000010000000000000083070000000F000042080000000000004B070000000F00000A080000000000004080005607000000FFFEFF054200750069006C006400000000000585000001000000FFFFFFFFFFFFFFFFFFFEFF094400650062007500670020004C006F006700010000000F85000001000000FFFFFFFFFFFFFFFFFFFEFF0C4400650063006C00610072006100740069006F006E007300000000001185000001000000FFFFFFFFFFFFFFFFFFFEFF0A5200650066006500720065006E00630065007300000000001285000001000000FFFFFFFFFFFFFFFFFFFEFF0D460069006E006400200069006E002000460069006C0065007300000000001385000001000000FFFFFFFFFFFFFFFFFFFEFF1541006D0062006900670075006F0075007300200044006500660069006E006900740069006F006E007300000000002785000001000000FFFFFFFFFFFFFFFFFFFEFF0B54006F006F006C0020004F0075007400700075007400000000003385000001000000FFFFFFFFFFFFFFFF01000000000000000000000001000000000000000000000001000000FFFFFFFF8007000014070000840700000A08000000000000020000000400000000000000A4FCFFFF6303000000000000000000000000000001000000FFFFFFFF0585000001000000FFFFFFFF05850000000000000080000000000000FFFFFFFFFFFFFFFF00000000FA050000000F0000FE050000000000000100000004000000010000000000000000000000FFFFFFFF040000001B8500001C8500001D8500001E850000018000800000000000000000000036060000000F00004407000000000000FE050000000F00000C070000000000004080004604000000FFFEFF084D0065006D006F007200790020003100000000001B85000001000000FFFFFFFFFFFFFFFFFFFEFF084D0065006D006F007200790020003200000000001C85000001000000FFFFFFFFFFFFFFFFFFFEFF084D0065006D006F007200790020003300000000001D85000001000000FFFFFFFFFFFFFFFFFFFEFF084D0065006D006F007200790020003400000000001E85000001000000FFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000000000000000000001000000FFFFFFFF1B85000001000000FFFFFFFF1B850000000000000080000000000000FFFFFFFFFFFFFFFF0000000036060000000F00003A060000000000000100000004000000010000000000000000000000FFFFFFFF0300000008850000208500003F850000018000800000000000000000000072060000000F000044070000000000003A060000000F00000C070000000000004080004603000000FFFEFF0F43006F0064006500200043006F0076006500720061006700650020002A00000000000885000001000000FFFFFFFFFFFFFFFFFFFEFF11460075006E006300740069006F006E002000500072006F00660069006C0065007200000000002085000001000000FFFFFFFFFFFFFFFFFFFEFF09450054004D00200054007200610063006500000000003F85000001000000FFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000000000000000000001000000FFFFFFFF0885000001000000FFFFFFFF0885000022000000FFFF02001200434D756C746950616E654672616D65576E6400010084F8FEFFFF84FFFFFF100000003B0100000000000000000000020000000000000003850000000000000000000000000000000000000100000003850000068000010084DAFEFFFF1B03000010000000F60300000000000000000000020000000000000004850000000000000000000000000000000000000100000004850000068000010084F8FEFFFF0D01000010000000C40200000000000000000000020000000000000007850000000000000000000000000000000000000100000007850000068000010084DAFEFFFF84FFFFFF100000005F0000000000000000000000020000000000000009850000000000000000000000000000000000000100000009850000068000010084DAFEFFFF84FFFFFF100000005F000000000000000000000002000000000000000A85000000000000000000000000000000000000010000000A850000068000010084DAFEFFFF84FFFFFF100000005F0000000000000000000000020000000000000040850000000000000000000000000000000000000100000040850000068000010084DAFEFFFF84FFFFFF100000005F0000000000000000000000020000000000000041850000000000000000000000000000000000000100000041850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000000E85000000000000000000000000000000000000010000000E850000068000010084F8FEFFFFF003000010000000A70500000000000000000000020000000000000010850000000000000000000000000000000000000100000010850000068000010084000000001700000036010000F2000000000000000000000002000000000000003D85000000000000000000000000000000000000010000003D850000068000010084000000001700000036010000F2000000000000000000000002000000000000003E85000000000000000000000000000000000000010000003E850000068000010084DAFEFFFF84FFFFFF100000005F000000000000000000000002000000000000001585000000000000000000000000000000000000010000001585000006800001008418FFFFFFAD02000030000000640400000000000000000000020000000000000018850000000000000000000000000000000000000100000018850000068000010084F8FEFFFF84FFFFFF100000003B0100000000000000000000020000000000000019850000000000000000000000000000000000000100000019850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000001A85000000000000000000000000000000000000010000001A850000068000010084DAFEFFFF84FFFFFF100000005F000000000000000000000002000000000000001F85000000000000000000000000000000000000010000001F850000068000010084F8FEFFFF84FFFFFF100000003B0100000000000000000000020000000000000021850000000000000000000000000000000000000100000021850000068000010084F8FEFFFF84FFFFFF100000003B0100000000000000000000020000000000000022850000000000000000000000000000000000000100000022850000068000010084F8FEFFFFD101000010000000880300000000000000000000020000000000000023850000000000000000000000000000000000000100000023850000068000010084F8FEFFFF84FFFFFF100000003B0100000000000000000000020000000000000024850000000000000000000000000000000000000100000024850000068000010084F8FEFFFF84FFFFFF100000003B0100000000000000000000020000000000000025850000000000000000000000000000000000000100000025850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000002685000000000000000000000000000000000000010000002685000006800001008406FFFFFFC80000001E0000007F020000000000000000000002000000000000002B85000000000000000000000000000000000000010000002B850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000002C85000000000000000000000000000000000000010000002C850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000002D85000000000000000000000000000000000000010000002D850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000002E85000000000000000000000000000000000000010000002E850000068000010084DAFEFFFFDB03000010000000B6040000000000000000000002000000000000002F85000000000000000000000000000000000000010000002F850000068000010084F8FEFFFF84FFFFFF100000003B010000000000000000000002000000000000003085000000000000000000000000000000000000010000003085000006800001008444FEFFFF84FFFFFF1000000073000000000000000000000002000000000000003185000000000000000000000000000000000000010000003185000006800001008444FEFFFF84FFFFFF100000007300000000000000000000000200000000000000328500000000000000000000000000000000000001000000328500000680000100842EFFFFFFE5000000460000009C02000000000000000000000200000000000000388500000000000000000000000000000000000001000000388500000680000100841FFFFFFFD1000000370000008802000000000000000000000200000000000000398500000000000000000000000000000000000001000000398500000680000100843FFFFFFFB4020000570000006B040000000000000000000002000000000000003A85000000000000000000000000000000000000010000003A85000006800001008449FFFFFFB5020000610000006C040000000000000000000002000000000000003B85000000000000000000000000000000000000010000003B8500000000000000000000</DockingPaneAndPaneDividers>
+                <DockingPaneAndPaneDividers>0000000008000000000000000010000001000000FFFFFFFFFFFFFFFF37010000310000003B0100002E060000000000000200001004000000010000007FFFFFFFC1040000FFFFFFFF020000002A8500003C850000FFFF02000B004354616262656450616E650010000001000000000000009B00000037010000660600000000000031000000370100002E060000000000004010005602000000FFFEFF0E53006F0075007200630065002000420072006F007700730065007200000000002A85000001000000FFFFFFFFFFFFFFFFFFFEFF0957006F0072006B0073007000610063006500010000003C85000001000000FFFFFFFFFFFFFFFF01000000000000000000000000000000000000000000000001000000FFFFFFFF2A85000001000000FFFFFFFF2A850000000000000080000000000000FFFFFFFFFFFFFFFF000000000000000004000000040000000000000001000000040000000100000000000000000000000B85000000000000000000000000000000000000010000000B850000010000000B850000000000000080000000000000FFFFFFFFFFFFFFFF00000000000000000400000004000000000000000100000004000000010000000000000000000000068500000000000000000000000000000000000001000000068500000100000006850000000000000080000001000000FFFFFFFFFFFFFFFF000000002E060000000F000032060000000000000100001004000000010000001FFBFFFF1202000000000000000000000000000001000000FFFFFFFF07000000058500000F850000118500001285000013850000278500003385000001800080000001000000000000006A06000080070000420800000000000032060000000F00000A080000000000004080005607000000FFFEFF054200750069006C006400000000000585000001000000FFFFFFFFFFFFFFFFFFFEFF094400650062007500670020004C006F006700010000000F85000001000000FFFFFFFFFFFFFFFFFFFEFF0C4400650063006C00610072006100740069006F006E007300000000001185000001000000FFFFFFFFFFFFFFFFFFFEFF0A5200650066006500720065006E00630065007300000000001285000001000000FFFFFFFFFFFFFFFFFFFEFF0D460069006E006400200069006E002000460069006C0065007300000000001385000001000000FFFFFFFFFFFFFFFFFFFEFF1541006D0062006900670075006F0075007300200044006500660069006E006900740069006F006E007300000000002785000001000000FFFFFFFFFFFFFFFFFFFEFF0B54006F006F006C0020004F0075007400700075007400000000003385000001000000FFFFFFFFFFFFFFFF01000000000000000000000001000000000000000000000001000000FFFFFFFF8007000032060000840700000A08000000000000020000100400000000000000A4FCFFFF6303000000000000000000000000000001000000FFFFFFFF0585000001000000FFFFFFFF05850000000000000000000000000000</DockingPaneAndPaneDividers>
             </DockingManager-256>
             <MFCToolBar-34048>
                 <Name>CMSIS-Pack</Name>
@@ -1201,7 +1201,7 @@
             </BasePane-34049>
             <MFCToolBar-34050>
                 <Name>Main</Name>
-                <Buttons>00200000010000002100FFFF01001100434D4643546F6F6C426172427574746F6E00E100000000000068000000FFFEFF000000000000000000000000000100000000000000018001E100000000000069000000FFFEFF000000000000000000000000000100000000000000018003E10000000000006B000000FFFEFF000000000000000000000000000100000001000000018000810000000000004B000000FFFEFF00000000000000000000000000010000000100000001800000000001000000FFFFFFFFFFFEFF000000000000000000000000000100000001000000018007E10000000000006E000000FFFEFF00000000000000000000000000010000000000000001800000000001000000FFFFFFFFFFFEFF000000000000000000000000000100000000000000018023E100000000040070000000FFFEFF000000000000000000000000000100000000000000018022E10000000004006F000000FFFEFF000000000000000000000000000100000000000000018025E100000000000072000000FFFEFF00000000000000000000000000010000000000000001800000000001000000FFFFFFFFFFFEFF00000000000000000000000000010000000000000001802BE100000000040076000000FFFEFF00000000000000000000000000010000000100000001802CE100000000040077000000FFFEFF00000000000000000000000000010000000100000001800000000001000000FFFFFFFFFFFEFF000000000000000000000000000100000001000000FFFF01001900434D4643546F6F6C426172436F6D626F426F78427574746F6E4281000000000000FFFFFFFFFFFEFF0001000000000000000100000000000000010000007800000002002050FFFFFFFFFFFEFF0096000000000000000A00FFFEFF05570050004B0045005900FFFEFF07500049004F005F00500045005200FFFEFF08500049004F005F004F00570045005200FFFEFF09500049004F0042005F004F00570045005200FFFEFF0E500049004F0042005F004F005700450052005F0049004E0049005400FFFEFF0D500049004F0042005F005000450052005F0049004E0049005400FFFEFF042800310031002900FFFEFF0B5700440054005F004D0052005F0049004E0049005400FFFEFF0557004400440049005300FFFEFF0D500042005F00310033005F004C00450044005F0057004800540000000000000000000000000000000000000000000000000000000000000000000000000000000000018021810000000004005F000000FFFEFF000000000000000000000000000100000001000000018024E100000000000071000000FFFEFF000000000000000000000000000100000001000000018028E100000000040073000000FFFEFF000000000000000000000000000100000001000000018029E100000000000074000000FFFEFF000000000000000000000000000100000001000000018002810000000000004D000000FFFEFF0000000000000000000000000001000000010000000180298100000000000063000000FFFEFF0000000000000000000000000001000000000000000180278100000000000061000000FFFEFF0000000000000000000000000001000000000000000180288100000000000062000000FFFEFF00000000000000000000000000010000000000000001801D810000000004005B000000FFFEFF00000000000000000000000000010000000000000001801E810000000004005C000000FFFEFF00000000000000000000000000010000000000000001800000000001000000FFFFFFFFFFFEFF00000000000000000000000000010000000000000001800B8100000000000051000000FFFEFF00000000000000000000000000010000000000000001800C8100000000000052000000FFFEFF00000000000000000000000000010000000100000001805F8600000000000067000000FFFEFF00000000000000000000000000010000000100000001800000000001000000FFFFFFFFFFFEFF00000000000000000000000000010000000100000001801F810000000000005D000000FFFEFF000000000000000000000000000100000001000000018020810000000000005E000000FFFEFF0000000000000000000000000001000000000000000180468100000000000065000000FFFEFF00000000000000000000000000010000000100000000000000FFFEFF044D00610069006E00E7020000</Buttons>
+                <Buttons>00200000010000002100FFFF01001100434D4643546F6F6C426172427574746F6E00E100000000000068000000FFFEFF000000000000000000000000000100000000000000018001E100000000000069000000FFFEFF000000000000000000000000000100000000000000018003E10000000000006B000000FFFEFF000000000000000000000000000100000001000000018000810000000000004B000000FFFEFF00000000000000000000000000010000000100000001800000000001000000FFFFFFFFFFFEFF000000000000000000000000000100000001000000018007E10000000000006E000000FFFEFF00000000000000000000000000010000000000000001800000000001000000FFFFFFFFFFFEFF000000000000000000000000000100000000000000018023E100000000040070000000FFFEFF000000000000000000000000000100000000000000018022E10000000004006F000000FFFEFF000000000000000000000000000100000000000000018025E100000000000072000000FFFEFF00000000000000000000000000010000000000000001800000000001000000FFFFFFFFFFFEFF00000000000000000000000000010000000000000001802BE100000000000076000000FFFEFF00000000000000000000000000010000000100000001802CE100000000040077000000FFFEFF00000000000000000000000000010000000100000001800000000001000000FFFFFFFFFFFEFF000000000000000000000000000100000001000000FFFF01001900434D4643546F6F6C426172436F6D626F426F78427574746F6E4281000000000000FFFFFFFFFFFEFF0000000000000000000100000000000000010000007800000002002050FFFFFFFFFFFEFF0096000000000000000A00FFFEFF05570050004B0045005900FFFEFF07500049004F005F00500045005200FFFEFF08500049004F005F004F00570045005200FFFEFF09500049004F0042005F004F00570045005200FFFEFF0E500049004F0042005F004F005700450052005F0049004E0049005400FFFEFF0D500049004F0042005F005000450052005F0049004E0049005400FFFEFF042800310031002900FFFEFF0B5700440054005F004D0052005F0049004E0049005400FFFEFF0557004400440049005300FFFEFF0D500042005F00310033005F004C00450044005F0057004800540000000000000000000000000000000000000000000000000000000000000000000000000000000000018021810000000004005F000000FFFEFF000000000000000000000000000100000001000000018024E100000000000071000000FFFEFF000000000000000000000000000100000001000000018028E100000000040073000000FFFEFF000000000000000000000000000100000001000000018029E100000000000074000000FFFEFF000000000000000000000000000100000001000000018002810000000000004D000000FFFEFF0000000000000000000000000001000000010000000180298100000000000063000000FFFEFF0000000000000000000000000001000000000000000180278100000000000061000000FFFEFF0000000000000000000000000001000000000000000180288100000000000062000000FFFEFF00000000000000000000000000010000000000000001801D810000000000005B000000FFFEFF00000000000000000000000000010000000000000001801E810000000004005C000000FFFEFF00000000000000000000000000010000000000000001800000000001000000FFFFFFFFFFFEFF00000000000000000000000000010000000000000001800B8100000000000051000000FFFEFF00000000000000000000000000010000000000000001800C8100000000000052000000FFFEFF00000000000000000000000000010000000100000001805F8600000000000067000000FFFEFF00000000000000000000000000010000000100000001800000000001000000FFFFFFFFFFFEFF00000000000000000000000000010000000100000001801F810000000002005D000000FFFEFF000000000000000000000000000100000001000000018020810000000000005E000000FFFEFF0000000000000000000000000001000000000000000180468100000000000065000000FFFEFF00000000000000000000000000010000000100000000000000FFFEFF044D00610069006E00E7020000</Buttons>
             </MFCToolBar-34050>
             <Pane-34050>
                 <ID>34050</ID>
@@ -1219,7 +1219,7 @@
             <Pane-34111>
                 <ID>34111</ID>
                 <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
-                <RectRecentDocked>0400000070060000FC0E0000D7060000</RectRecentDocked>
+                <RectRecentDocked>000000005502000080070000D6020000</RectRecentDocked>
                 <RecentFrameAlignment>4096</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
                 <IsFloating>0</IsFloating>
@@ -1260,11 +1260,11 @@
             <IarPane-34110 />
             <Pane-34112>
                 <ID>34112</ID>
-                <RectRecentFloat>DAFEFFFF84FFFFFF100000005F000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
                 <RectRecentDocked>000000000000000036010000DB000000</RectRecentDocked>
                 <RecentFrameAlignment>8192</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34112>
@@ -1273,11 +1273,11 @@
             </BasePane-34112>
             <Pane-34113>
                 <ID>34113</ID>
-                <RectRecentFloat>DAFEFFFF84FFFFFF100000005F000000</RectRecentFloat>
+                <RectRecentFloat>A0F6FFFF84FFFFFFD6F7FFFF5F000000</RectRecentFloat>
                 <RectRecentDocked>000000000000000036010000DB000000</RectRecentDocked>
                 <RecentFrameAlignment>8192</RecentFrameAlignment>
                 <RecentRowIndex>0</RecentRowIndex>
-                <IsFloating>1</IsFloating>
+                <IsFloating>0</IsFloating>
                 <MRUWidth>32767</MRUWidth>
                 <PinState>0</PinState>
             </Pane-34113>
