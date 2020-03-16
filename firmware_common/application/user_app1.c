@@ -108,6 +108,23 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 static void MainState(void)
 {
   LedOn(GREEN); //to indicate the MainState is being run
+  static int num = 1234;
+  static int y = 1;
+  if ( y == 1)
+  {
+    u8 currentBet[4];
+    currentBet[0] = num % 10000 / 1000 + 48;
+    currentBet[1] = num % 1000 / 100 + 48;
+    currentBet[2] = num % 100 / 10 + 48;
+    currentBet[3] = num % 10 + 48;
+    LcdMessage(LINE1_START_ADDR + 7, currentBet);       // 20 chars long, clears the dipslay
+    LcdMessage(LINE1_START_ADDR, "Chips: ");       // 20 chars long, clears the dipslay
+    LcdMessage(LINE1_START_ADDR + 11, " Bet:     ");       // 20 chars long, clears the dipslay
+    LcdMessage(LINE2_START_ADDR, "Up  Down  Enter Back");       // 20 chars long, i'm pretty sure
+    
+    y = 2;
+  }
+  
 }
 //-----------------------------------------------------------------------------------------------------------------------
 
