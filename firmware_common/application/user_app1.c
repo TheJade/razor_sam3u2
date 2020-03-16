@@ -34,7 +34,10 @@ struct xorwow_state;
 struct character;
 struct GameStates;
 
+//function headers
 u32 GeneratedNumber(struct xorwow_state *state);
+void displayPlayerChips(void);
+
 
 //Structures here
 struct xorwow_state{  //stores the values for the Random Number Generator
@@ -64,7 +67,7 @@ static struct character Player2;
 struct GameStates{
   //don't need this line//u8 players_delt = 0; // helps in Generating the Cards state
   u8 max_players; //number of player in the game should be setable
-  u8 player_turn; // who's turn the game is currently on
+  u8 player_turn; // who's turn the game is currently on        // = 1 means player1's turn
   u8 river0;  //holds the first card placed in the river
   u8 river1;  
   u8 river2;
@@ -419,6 +422,17 @@ static void UserApp1SM_Error(void)
 
 
 //------------------------------------Functions---------------------------------------------------------------------------
+
+void displayPlayerChips(void)
+{
+  if ( player_turn == 1 )
+  {
+    char chipschar[7];  // idk how long this should be
+    char pot[7];
+    LedOn(LCD_RED);
+    LcdMessage(LINE1_START_ADDR, "Chips:      Bet:    ");       // 20 chars long, clears the dipslay
+  }
+}
 
 //code adapeted from the XorShift method of psuedorandom number genertation (PRNG)
 u32 GeneratedNumber(struct xorwow_state *state)
