@@ -2,6 +2,14 @@
 
 //version: LABEL_THE_REPOSITORY
 
+/*
+TO DO:
+  next I want to work on the menu system it will probably be boring but nessiary to next step so I can begin
+    to test all the parts that are coming togeather
+
+*/
+
+
 #include "configuration.h"
 
 //Global variable definitions with scope across entire project.
@@ -73,6 +81,7 @@ struct GameStates{
   u8 river2;
   u8 river3;
   u8 river4;  //holds the last card placed in the river
+  int pot;      // I'm pretty sure it needs to be an int
 }GameState;
 
 //-----------------------------------------------------------------------------------------------------------------------
@@ -167,6 +176,8 @@ static void Startup(void) //basic menu system to generate the seed (at this poin
 //--------------------------------------put--the--version--code--here----------------------------------------------------
 static void MainState(void)
 {
+  
+  
   static u8 *deck[] = { // just be aware thi is not global (can only be used in this function)
             "2D", //index is 0
             "3D",
@@ -423,14 +434,21 @@ static void UserApp1SM_Error(void)
 
 //------------------------------------Functions---------------------------------------------------------------------------
 
-void displayPlayerChips(void)
+void displayPlayerChips(void)   
 {
-  if ( player_turn == 1 )
+  if ( GameState.player_turn == 1 )
   {
-    char chipschar[7];  // idk how long this should be
-    char pot[7];
-    LedOn(LCD_RED);
-    LcdMessage(LINE1_START_ADDR, "Chips:      Bet:    ");       // 20 chars long, clears the dipslay
+    // will need to also display the pot
+    // max number converted in 4 digits
+    u8 currentBet[4];
+    currentBet[0] = Player1.chips % 10000 / 1000 + 48;  
+    currentBet[1] = Player1.chips % 1000 / 100 + 48;
+    currentBet[2] = Player1.chips % 100 / 10 + 48;
+    currentBet[3] = Player1.chips % 10 + 48;
+    LcdMessage(LINE1_START_ADDR + 7, currentBet);       // 20 chars long, clears the dipslay
+    LcdMessage(LINE1_START_ADDR, "Chips: ");       // 20 chars long, clears the dipslay
+    LcdMessage(LINE1_START_ADDR + 11, " Bet:     ");       // 20 chars long, clears the dipslay
+    LcdMessage(LINE2_START_ADDR, "Up  Down  Enter Back");       // 20 chars long, i'm pretty sure
   }
 }
 
