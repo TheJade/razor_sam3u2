@@ -29,6 +29,7 @@ static fnCode_type UserApp1_pfStateMachine;               /*!< @brief The state 
 
 //states initialized
 static void Startup(void);
+static void MainMenu4Player(void);
 static void MainState(void);    // is the main menu the user interacts with on their turn
 static void Bet(void);  // is a sub menu of MainState contols the Bets a user does
 static void GenerateCards(void);        // fills the structures with random cards, to be run at begginning of each round
@@ -75,6 +76,7 @@ static struct character Player2;
 struct GameStates{
   //don't need this line//u8 players_delt = 0; // helps in Generating the Cards state
   u8 max_players; //number of player in the game should be setable
+  u8 river_display; // the amount of the river to display on a player's turn
   u8 player_turn; // who's turn the game is currently on        // = 1 means player1's turn
   u8 river0;  //holds the first card placed in the river
   u8 river1;  
@@ -89,96 +91,7 @@ struct GameStates{
 //Put global veribals here
 static int x = 1;       // is used in the main state
 static int y = 1;       // used in Bet state
-
-void UserApp1Initialize(void)
-{
-  
-/* All discrete LEDs to off */
-  LedOff(WHITE);
-  LedOff(PURPLE);
-  LedOff(BLUE);
-  LedOff(CYAN);
-  LedOff(GREEN);
-  LedOff(YELLOW);
-  LedOff(ORANGE);
-  LedOff(RED);
-  LcdMessage(LINE1_START_ADDR, "Basic Menu Start    ");
-  LcdMessage(LINE2_START_ADDR, "Press any button    ");
-  
-  TestFunction2();// To be removed just an example of using a fuction from another file
-  TestFunction3();// To be removed just an example of using a fuction from another file
-
-  //initializes the seeds so that they have some values will be reassigned later
-  seed.a = 523; //Stores the First button press to help genertate a "random number"
-  seed.b = 212; //random number I grabbed
-  seed.c = 1177;  //another random number I grabbed
-  seed.d = 1279; //last random number I grabbed
-  
-  // to be incorperated later on in a start up menu or something
-  GameState.max_players = 2; 
-  static struct character Player1;
-  static struct character Player2;
-  Player1.chips = 250;  
-  Player1.chips = 250;
-  // end the menu add stuff
-  
-  if( 1 )
-  {
-    UserApp1_pfStateMachine = Startup; //first state = Startup
-  }
-  else
-  {
-    /* The task isn't properly initialized, so shut it down and don't run */
-    UserApp1_pfStateMachine = UserApp1SM_Error;
-  }
-} /* end UserApp1Initialize() */
-
-
-void UserApp1RunActiveState(void)//runs the state that  UserApp1_pfStateMachine(); points to
-{
-  UserApp1_pfStateMachine();
-} /* end UserApp1RunActiveState */
-
-
-static void Startup(void) //basic menu system to generate the seed (at this point the seed is not that complicated)
-{
-
-  if (WasButtonPressed(BUTTON0))
-  {
-    seed.a = G_u32SystemTime1ms + 162;  //just some additional psudeorandomness
-    UserApp1_pfStateMachine = MainState;
-    ButtonAcknowledge(BUTTON0);
-    
-  }
-  else if (WasButtonPressed(BUTTON1))
-  {
-    seed.b = G_u32SystemTime1ms + 2576; //could assign value to seed.b but causes the first GenNumber
-    UserApp1_pfStateMachine = MainState;        //instance the same aka. GenNum returns value based on seed.a
-    ButtonAcknowledge(BUTTON1);
-    
-  }
-  else if (WasButtonPressed(BUTTON2))
-  {
-    seed.c = G_u32SystemTime1ms + 7826;
-    UserApp1_pfStateMachine = MainState;
-    ButtonAcknowledge(BUTTON2);
-    
-  }
-     
-  else if (WasButtonPressed(BUTTON3))
-  {
-    seed.d = G_u32SystemTime1ms + 8716; 
-    UserApp1_pfStateMachine = MainState;
-    ButtonAcknowledge(BUTTON3);
-    
-  }
-}
-//--------------------------------------put--the--version--code--here----------------------------------------------------
-static void MainState(void)
-{
-  
-  
-  static u8 *deck[] = { // just be aware thi is not global (can only be used in this function)
+static u8 *deck[] = { // it is global
             "2D", //index is 0
             "3D",
             "4D", //called by u8 *CardDisplay = deck[2];
@@ -235,6 +148,135 @@ static void MainState(void)
             "KH",
             "AH"
       };
+
+void UserApp1Initialize(void)
+{
+  
+/* All discrete LEDs to off */
+  LedOff(WHITE);
+  LedOff(PURPLE);
+  LedOff(BLUE);
+  LedOff(CYAN);
+  LedOff(GREEN);
+  LedOff(YELLOW);
+  LedOff(ORANGE);
+  LedOff(RED);
+  LcdMessage(LINE1_START_ADDR, "Basic Menu Start    ");
+  LcdMessage(LINE2_START_ADDR, "Press any button    ");
+  
+  TestFunction2();// To be removed just an example of using a fuction from another file
+  TestFunction3();// To be removed just an example of using a fuction from another file
+
+  //initializes the seeds so that they have some values will be reassigned later
+  seed.a = 523; //Stores the First button press to help genertate a "random number"
+  seed.b = 212; //random number I grabbed
+  seed.c = 1177;  //another random number I grabbed
+  seed.d = 1279; //last random number I grabbed
+  
+  // to be incorperated later on in a start up menu or something
+  GameState.max_players = 2; 
+  static struct character Player1;
+  static struct character Player2;
+  Player1.chips = 250;  
+  Player1.chips = 250;
+  GameState.round = 0; // the first round of a single hand of poker
+  // end the menu add stuff
+  
+  if( 1 )
+  {
+    UserApp1_pfStateMachine = Startup; //first state = Startup
+  }
+  else
+  {
+    /* The task isn't properly initialized, so shut it down and don't run */
+    UserApp1_pfStateMachine = UserApp1SM_Error;
+  }
+} /* end UserApp1Initialize() */
+
+
+void UserApp1RunActiveState(void)//runs the state that  UserApp1_pfStateMachine(); points to
+{
+  UserApp1_pfStateMachine();
+} /* end UserApp1RunActiveState */
+
+
+static void Startup(void) //basic menu system to generate the seed (at this point the seed is not that complicated)
+{
+
+  if (WasButtonPressed(BUTTON0))
+  {
+    seed.a = G_u32SystemTime1ms + 162;  //just some additional psudeorandomness
+    UserApp1_pfStateMachine = MainState;
+    ButtonAcknowledge(BUTTON0);
+    
+  }
+  else if (WasButtonPressed(BUTTON1))
+  {
+    seed.b = G_u32SystemTime1ms + 2576; //could assign value to seed.b but causes the first GenNumber
+    UserApp1_pfStateMachine = MainState;        //instance the same aka. GenNum returns value based on seed.a
+    ButtonAcknowledge(BUTTON1);
+    
+  }
+  else if (WasButtonPressed(BUTTON2))
+  {
+    seed.c = G_u32SystemTime1ms + 7826;
+    UserApp1_pfStateMachine = MainState;
+    ButtonAcknowledge(BUTTON2);
+    
+  }
+     
+  else if (WasButtonPressed(BUTTON3))
+  {
+    seed.d = G_u32SystemTime1ms + 8716; 
+    UserApp1_pfStateMachine = MainState;
+    ButtonAcknowledge(BUTTON3);
+    
+  }
+}
+//--------------------------------------put--the--version--code--here----------------------------------------------------
+static void MainMenu4Player(void) // is called when it is each persons turn
+{
+  // will be the display for the user
+  /*______________________
+    |7H 8S|JD 9H 7S AC 2H|                 
+    |Check  Bet   Fold  Q|                    
+    ______________________
+    O      O       O     O  */
+  static u8 MMRPPrologue = 1; // runs once
+  if (MMRPPrologue == 1)  // to display the menu option, same for every player
+  {
+    LcdMessage(LINE2_START_ADDR, "Check Bet  Fold Info");  // infor will be display the info about the game, aka.
+                                                              // players still in, pot,
+    MMRPPrologue = 0;
+  }
+  if (GameState.player_turn == 1) // if it's player1's turn
+  {
+      LcdMessage(LINE1_START_ADDR, deck[Player1.hand0]);
+      LcdMessage(LINE1_START_ADDR + 3, deck[Player1.hand1]);
+  }
+  else if (GameState.player_turn == 2) // if it's player2's turn
+  {
+      LcdMessage(LINE1_START_ADDR, deck[Player2.hand0]);
+      LcdMessage(LINE1_START_ADDR + 3, deck[Player2.hand1]);
+  }
+  if (GameState.round == 1) // will call the first round of betting from players
+  {
+    
+
+  }
+  if (GameState.round == 2)  // displays 3 cards in the river
+  {
+    LcdMessage(LINE1_START_ADDR + 5, "|");  // think this will work
+    LcdMessage(LINE1_START_ADDR + 18, deck[GameState.river0]);
+    LcdMessage(LINE1_START_ADDR + 15, deck[GameState.river1]);
+    LcdMessage(LINE1_START_ADDR + 12, deck[GameState.river2]);
+  }
+  // epilogue: need to set river_display to correct value
+    // need to reset MMRPPrologue to 1
+}
+
+static void MainState(void) //should rename to be more descriptive
+{
   LedOn(GREEN); //to indicate the MainState is being run
        // 0 = wait till input state
   if (x == 1)
@@ -312,7 +354,7 @@ static void Bet(void)       // this state will control the bet menu     //y is t
 
 static void GenerateCards(void)
 {
-    static u8 deck[52];        // not to be confused with deck in the MainState
+    static u8 remove_from_deck[52];        // not to be confused with deck in the MainState
                         // cards avaible in the deck, will be reset at the last loop of generate cards
                         // 0/Null means card not used yet, 1 means card has already been delt this round
     LedOn(YELLOW);  //just to help indicate the current state
@@ -321,43 +363,43 @@ static void GenerateCards(void)
     if (GCRun == 0) // will generate the river then increment GCRun
     {
       GameState.river0 = GeneratedNumber(&seed) % 52;
-      deck[GameState.river0] = 1; // make it zero  
+      remove_from_deck[GameState.river0] = 1; // make it zero  
       GCRun = 1;  //should now become = 1
     }   //ends initialization of state
     
     if  (GCRun == 1)
     {
       GameState.river1 = GeneratedNumber(&seed) % 52;
-      if (deck[GameState.river1] != 1)
+      if (remove_from_deck[GameState.river1] != 1)
       {
-        deck[GameState.river1] = 1;    // "removes" card for deck
+        remove_from_deck[GameState.river1] = 1;    // "removes" card for deck
         GCRun = 2;
       }
     }
     if  (GCRun == 2)
     {
       GameState.river2 = GeneratedNumber(&seed) % 52;
-      if (deck[GameState.river2] != 1)
+      if (remove_from_deck[GameState.river2] != 1)
       {
-        deck[GameState.river2] = 1;    // "removes" card for deck
+        remove_from_deck[GameState.river2] = 1;    // "removes" card for deck
         GCRun = 3;
       }
     }
     if  (GCRun == 3)
     {
       GameState.river3 = GeneratedNumber(&seed) % 52;
-      if (deck[GameState.river3] != 1)
+      if (remove_from_deck[GameState.river3] != 1)
       {
-        deck[GameState.river3] = 1;    // "removes" card for deck
+        remove_from_deck[GameState.river3] = 1;    // "removes" card for deck
         GCRun = 4;
       }
     }
     if  (GCRun == 4)
     {
       GameState.river4 = GeneratedNumber(&seed) % 52;
-      if (deck[GameState.river4] != 1)
+      if (remove_from_deck[GameState.river4] != 1)
       {
-        deck[GameState.river4] = 1;    // "removes" card for deck
+        remove_from_deck[GameState.river4] = 1;    // "removes" card for deck
         GCRun = 5;
       }
     }
@@ -367,18 +409,18 @@ static void GenerateCards(void)
     if  (GCRun == 5)    // don't know how to do it for a certain selected number of players just doing 2 players for now
     {
       Player1.hand0 = GeneratedNumber(&seed) % 52;
-      if (deck[Player1.hand0] != 1)
+      if (remove_from_deck[Player1.hand0] != 1)
       {
-        deck[Player1.hand0] = 1;    // "removes" card for deck
+        remove_from_deck[Player1.hand0] = 1;    // "removes" card for deck
         GCRun = 6;
       }
     }
     if  (GCRun == 6)    // don't know how to do it for a certain selected number of players just doing 2 players for now
     {
       Player1.hand1 = GeneratedNumber(&seed) % 52;
-      if (deck[Player1.hand1] != 1)
+      if (remove_from_deck[Player1.hand1] != 1)
       {
-        deck[Player1.hand1] = 1;    // "removes" card for deck
+        remove_from_deck[Player1.hand1] = 1;    // "removes" card for deck
         GCRun = 7;
       }
     }
@@ -386,18 +428,18 @@ static void GenerateCards(void)
     if  (GCRun == 7)    // don't know how to do it for a certain selected number of players just doing 2 players for now
     {
       Player2.hand0 = GeneratedNumber(&seed) % 52;
-      if (deck[Player2.hand0] != 1)
+      if (remove_from_deck[Player2.hand0] != 1)
       {
-        deck[Player2.hand0] = 1;    // "removes" card for deck
+        remove_from_deck[Player2.hand0] = 1;    // "removes" card for deck
         GCRun = 8;
       }
     }
     if  (GCRun == 8)    // don't know how to do it for a certain selected number of players just doing 2 players for now
     {
       Player2.hand1 = GeneratedNumber(&seed) % 52;
-      if (deck[Player2.hand1] != 1)     
+      if (remove_from_deck[Player2.hand1] != 1)     
       {
-        deck[Player2.hand1] = 1;    // "removes" card for deck
+        remove_from_deck[Player2.hand1] = 1;    // "removes" card for deck
         GCRun = 9;
       }
     }
@@ -405,16 +447,16 @@ static void GenerateCards(void)
     {
       GCRun = 0;
       // "adds" the cards back to the deck
-      deck[GameState.river0] = 0;
-      deck[GameState.river1] = 0;
-      deck[GameState.river2] = 0;
-      deck[GameState.river3] = 0;
-      deck[GameState.river4] = 0;
+      remove_from_deck[GameState.river0] = 0;
+      remove_from_deck[GameState.river1] = 0;
+      remove_from_deck[GameState.river2] = 0;
+      remove_from_deck[GameState.river3] = 0;
+      remove_from_deck[GameState.river4] = 0;
         
-      deck[Player1.hand0] = 0; 
-      deck[Player1.hand1] = 0;
-      deck[Player2.hand0] = 0; 
-      deck[Player2.hand1] = 0;
+      remove_from_deck[Player1.hand0] = 0; 
+      remove_from_deck[Player1.hand1] = 0;
+      remove_from_deck[Player2.hand0] = 0; 
+      remove_from_deck[Player2.hand1] = 0;
       UserApp1_pfStateMachine = MainState;
     }
 }
