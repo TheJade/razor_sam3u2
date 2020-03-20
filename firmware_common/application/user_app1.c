@@ -68,7 +68,7 @@ static void StartUp(void) //basic menu system to generate the seed (at this poin
   }
   if (WasButtonPressed(BUTTON0))
   {
-    seed.a = G_u32SystemTime1ms + 54982; //
+    seed.a = G_u32SystemTime1ms + 54982; // may or may not need to assign each to seed.d
     UserApp1_pfStateMachine = BrainState;
     GameState.max_players = 2;
     ButtonAcknowledge(BUTTON0);
@@ -111,7 +111,7 @@ static void BrainState(void)
   static int BS_prologue = 1;     // note prologue values need to be static in order to work properly     !!!
   if (BS_prologue == 1)
   {
-    // don't know what needs to be in here to start
+    UserApp1_pfStateMachine = GenerateCards;  // will populate the deck with cards
     BS_prologue = 0;
   }
 
@@ -124,116 +124,99 @@ static void PlayerTurn(void)
   // prologue needs:  
                 //  display "Player1's turn press a button" // so that other players don't see the Player1's cards
                 //  round_start_seed(); // to assign the random values to the
+  static int PT_prologue = 1;
+  if (PT_prologue == 1) //displays the player's turn
+  {
+    LcdMessage(LINE1_START_ADDR + 3, Player.player_name[GameState.player_turn]);  // will display the current player's turn ex. Player1's
+    LcdMessage(LINE1_START_ADDR + 10, "'s Turn   ");
+    LcdMessage(LINE1_START_ADDR, "   ");  // need to do the odd formating cuz when assigning values to the player_name
+                                              //extra charecters get added to the tail for some reason, so we cover em up
+    LcdMessage(LINE2_START_ADDR, "  Press Any Button  ");                           
+    PT_prologue = 2;
+  }
+  else if (PT_prologue == 2)  // adds more randomness to the seeds, should be called for each person's turn
+  {
+    int temp1 = round_start_seed(void);  // returns 0 if no button press, else returns 1,2,3, or 4
+    if (temp1 != 0)
+    {
+      LcdMessage(LINE1_START_ADDR, Player.hand[2 * GameState.player_turn]);      // 20 chars long, clears the dipslay
+      LcdMessage(LINE1_START_ADDR, Player.hand[2 * GameState.player_turn + 1]);
+      LcdMessage(LINE2_START_ADDR, "Check Bet  Fold Info"); // info will be displayed
+      PT_prologue = 3;
+    }
+  }
+  else if (PT_prologue == 3)  // w8 for user input
+  {
+    int temp2 = round_start_seed(void); // returns 0 if no button press, else returns 1,2,3, or 4
+    if (temp2 == 1) //check the round
+    {
+      // user checks, need to check agaist current bet on the table
+    }
+    else if (temp2 == 2)
+    {
+      // goes to the Bet menu state
+    }
+    else if (temp2 == 3)
+    {
+      // folds then checks if people still in the round
+    }
+    else if (temp2 == 4)
+    {
+      // goes to the Info menu state, just dipalys info about the other user's chips and current pot, folded or not
+    }
+    //PT_prologue = 4;
+  }
+  else if (PT_prologue == 4)
+  {
+    // w8 for user input
+  }
+  //eplilogue:
+    // set river back to 0
+    // set PT_prologue to back to 1 at end of round
 }
 //-----------------------------------------------------------------------------------------------------------------------
 static void GenerateCards(void)
 {
-    static u8 remove_from_deck[52];       
+  static u8 drawn_from_deck[52];       
                         // cards avaible in the deck, will be reset at the last loop of generate cards
                         // 0/Null means card not used yet, 1 means card has already been delt this round
-    LedOn(YELLOW);  //just to help indicate the current state
-    LedOff(GREEN);
-    static u8 GCRun = 0; //should be 0 if first run of state, increments for each card delt
-    if (GCRun == 0) // will generate the river then increment GCRun
+  LedOn(YELLOW);  //just to help indicate the current state
+  LedOff(GREEN);
+  static u8 GCRun = 0; //should be 0 if first run of state, increments for each card delt
+
+    // going to try and use a for loop, hopefully it doesn't put too much strain on the processor
+      // can break up into a couple interations to help the processor manage
+  for (int i = 0; i < 5;) // to generate the river, will only increment i if card not already drawn
+  {
+    GameState.river[i] = GeneratedNumber(&seed) % 52;
+    if (drawn_from_deck[GameState.river[i]] != 1)
     {
-      GameState.river0 = GeneratedNumber(&seed) % 52;
-      remove_from_deck[GameState.river0] = 1; // make it zero  
-      GCRun = 1;  //should now become = 1
-    }   //ends initialization of state
-    
-    if  (GCRun == 1)
-    {
-      GameState.river1 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[GameState.river1] != 1)
-      {
-        remove_from_deck[GameState.river1] = 1;    // "removes" card for deck
-        GCRun = 2;
-      }
+      drawn_from_deck[GameState.river[i]] = 1;
+      i++;
     }
-    if  (GCRun == 2)
+  }
+
+  for (int i = 0; i < (2 * GameState.max_players);) // generate the cards for the player's hands
+  {
+    Player.hand[i] = GeneratedNumber(&seed) % 52;
+    if (drawn_from_deck[Player.hand[i]] != 1)
     {
-      GameState.river2 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[GameState.river2] != 1)
-      {
-        remove_from_deck[GameState.river2] = 1;    // "removes" card for deck
-        GCRun = 3;
-      }
+      drawn_from_deck[Player.hand[i]] = 1;
+      i++;
     }
-    if  (GCRun == 3)
-    {
-      GameState.river3 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[GameState.river3] != 1)
-      {
-        remove_from_deck[GameState.river3] = 1;    // "removes" card for deck
-        GCRun = 4;
-      }
-    }
-    if  (GCRun == 4)
-    {
-      GameState.river4 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[GameState.river4] != 1)
-      {
-        remove_from_deck[GameState.river4] = 1;    // "removes" card for deck
-        GCRun = 5;
-      }
-    }
-    // river has been assigned to the GameState river varibles
-    
-    // player1
-    if  (GCRun == 5)    // don't know how to do it for a certain selected number of players just doing 2 players for now
-    {
-      Player1.hand0 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[Player1.hand0] != 1)
-      {
-        remove_from_deck[Player1.hand0] = 1;    // "removes" card for deck
-        GCRun = 6;
-      }
-    }
-    if  (GCRun == 6)    // don't know how to do it for a certain selected number of players just doing 2 players for now
-    {
-      Player1.hand1 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[Player1.hand1] != 1)
-      {
-        remove_from_deck[Player1.hand1] = 1;    // "removes" card for deck
-        GCRun = 7;
-      }
-    }
-    // player2
-    if  (GCRun == 7)    // don't know how to do it for a certain selected number of players just doing 2 players for now
-    {
-      Player2.hand0 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[Player2.hand0] != 1)
-      {
-        remove_from_deck[Player2.hand0] = 1;    // "removes" card for deck
-        GCRun = 8;
-      }
-    }
-    if  (GCRun == 8)    // don't know how to do it for a certain selected number of players just doing 2 players for now
-    {
-      Player2.hand1 = GeneratedNumber(&seed) % 52;
-      if (remove_from_deck[Player2.hand1] != 1)     
-      {
-        remove_from_deck[Player2.hand1] = 1;    // "removes" card for deck
-        GCRun = 9;
-      }
-    }
-    if (GCRun == 9)     // end of state epilogue
-    {
-      GCRun = 0;
-      // "adds" the cards back to the deck
-      remove_from_deck[GameState.river0] = 0;
-      remove_from_deck[GameState.river1] = 0;
-      remove_from_deck[GameState.river2] = 0;
-      remove_from_deck[GameState.river3] = 0;
-      remove_from_deck[GameState.river4] = 0;
-        
-      remove_from_deck[Player1.hand0] = 0; 
-      remove_from_deck[Player1.hand1] = 0;
-      remove_from_deck[Player2.hand0] = 0; 
-      remove_from_deck[Player2.hand1] = 0;
-      UserApp1_pfStateMachine = MainState;
-    }
+  }
+
+  for (int i = 0; i < 5; i++) // resets the drawn_from_deck back to all zeros
+  {
+    drawn_from_deck[GameState.river[i]] = 0;
+  }
+
+  for (int i = 0; i < (2 * GameState.max_players); i++)
+  {
+    drawn_from_deck[Player.hand[i]] = 0;
+  }
 }
+  
 //----------------------------------------------------------------------------------------------------------------
 
 static void UserApp1SM_Error(void)          
@@ -250,32 +233,36 @@ static void UserApp1SM_Error(void)
 /*******************************************************************************************************
 Functions
 *******************************************************************************************************/
-void round_start_seed(void) // will adjust the seed value, happens at the beginning of each persons turn
+int round_start_seed(void) // will adjust the seed value, happens at the beginning of each persons turn
 {
   if (WasButtonPressed(BUTTON0))
   {
     seed.a = seed.a - G_u32SystemTime1ms;
     ButtonAcknowledge(BUTTON0);
-    
+    return 1;
   }
   else if (WasButtonPressed(BUTTON1))
   {
     seed.b = seed.b - G_u32SystemTime1ms;
     ButtonAcknowledge(BUTTON1);
-    
+    return 2;
   }
   else if (WasButtonPressed(BUTTON2))
   {
     seed.c = seed.c - G_u32SystemTime1ms;
     ButtonAcknowledge(BUTTON2);
-    
+    return 3;
   }
      
   else if (WasButtonPressed(BUTTON3))
   {
     seed.d = seed.d - G_u32SystemTime1ms;
     ButtonAcknowledge(BUTTON3);
-    
+    return 4;
+  }
+  else
+  {
+    return 0;
   }
 }
 u32 GeneratedNumber(struct xorwow_state *state)
@@ -293,6 +280,6 @@ u32 GeneratedNumber(struct xorwow_state *state)
 	t ^= s ^ (s << 4);
 	state->a = t;
 
-	state->counter += 362437;
+	state->counter += 3624; // not too sure about a good size for the counter value
 	return t + state->counter;
 }

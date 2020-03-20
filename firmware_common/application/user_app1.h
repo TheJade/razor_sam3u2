@@ -33,26 +33,24 @@ struct Character{ //
   int fold[5];  // is 1 if the player hasn't folded, is 0 if the player has folded
 
   u8 fold;  // is 1 if the player hasn't folded, is 0 if the player has folded
-  //player name I could also add
+  u8 *player_name[5];   // will store all an array of all the player's names (obviously)
 }Player;    // index of an array of values signifies each player's stuff
                 //aka. index 0 and 1 for hands is for player 1, index 2 and 3 are for player 2
 
 static struct GameState{    // needs to be static or causes many errors
   u8 max_players; //number of player in the game should be setable
-  u8 river_display; // the amount of the river to display on a player's turn
-  u8 player_turn; // who's turn the game is currently on        // = 1 means player1's turn
-  u8 river0;  //holds the first card placed in the river
-  u8 river1;  
-  u8 river2;
-  u8 river3;
-  u8 river4;  //holds the last card placed in the river
+  int river_display; // the amount of the river to display on a player's turn, will change at the end of each round
+  int player_turn; // who's turn the game is currently on        // = 0 means player1's turn
+  int river[5];  //holds the cards in the river, will always be size of 5
   int pot;      // I'm pretty sure it needs to be an int
 }GameState;
 
 /**********************************************************************************************************************
 Function Declarations
 **********************************************************************************************************************/
+int round_start_seed(void);
 u32 GeneratedNumber(struct xorwow_state *state);
+
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @publicsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -85,6 +83,11 @@ static void Bet(void);  // is called from PlayerTurn can go back to PlayerTurn o
 /**********************************************************************************************************************
 Constants / Definitions
 **********************************************************************************************************************/
+Player.player_name[0] = "Player1";
+Player.player_name[1] = "Player2";
+Player.player_name[2] = "Player3";
+Player.player_name[3] = "Player4";
+Player.player_name[4] = "Player5";
 
 static u8 *deck[] = { // it is global   // index will be called and displayed, acts like a dictionary
             "2D", //index is 0
