@@ -31,10 +31,8 @@ struct Character{ //
   int chips[5];  //one index for each player
   int hand[10];  //2 indexes for each player 0 and 1 get assined to player1
   int fold[5];  // is 1 if the player hasn't folded, is 0 if the player has folded
-
-  u8 fold;  // is 1 if the player hasn't folded, is 0 if the player has folded
   u8 *player_name[5];   // will store all an array of all the player's names (obviously)
-}Player;    // index of an array of values signifies each player's stuff
+};    // index of an array of values signifies each player's stuff
                 //aka. index 0 and 1 for hands is for player 1, index 2 and 3 are for player 2
 
 static struct GameState{    // needs to be static or causes many errors
@@ -83,11 +81,6 @@ static void Bet(void);  // is called from PlayerTurn can go back to PlayerTurn o
 /**********************************************************************************************************************
 Constants / Definitions
 **********************************************************************************************************************/
-Player.player_name[0] = "Player1";
-Player.player_name[1] = "Player2";
-Player.player_name[2] = "Player3";
-Player.player_name[3] = "Player4";
-Player.player_name[4] = "Player5";
 
 static u8 *deck[] = { // it is global   // index will be called and displayed, acts like a dictionary
             "2D", //index is 0
@@ -98,13 +91,13 @@ static u8 *deck[] = { // it is global   // index will be called and displayed, a
             "7D",
             "8D",
             "9D",
-            "0D",   // 10 of dimonds
+            "0D",       // 8 (10 of diamonds)
             "JD",
             "QD",
             "KD",
             "AD",
             
-            "2C",
+            "2C",       // index 13
             "3C",
             "4C",
             "5C",
@@ -118,7 +111,7 @@ static u8 *deck[] = { // it is global   // index will be called and displayed, a
             "KC",
             "AC",
             
-            "2S",
+            "2S",       // 26
             "3S",
             "4S",
             "5S",
@@ -129,22 +122,22 @@ static u8 *deck[] = { // it is global   // index will be called and displayed, a
             "0S",
             "JS",
             "QS",
-            "KS",
-            "AS",
+            "KS",       // 37
+            "AS",       // 38
             
-            "2H",
-            "3H",
-            "4H",
-            "5H",
-            "6H",
+            "2H",       // 39
+            "3H",       // 40
+            "4H",       // 41
+            "5H",       // 42
+            "6H",       // 43
             "7H",
-            "8H",
+            "8H",       // 45
             "9H",
             "0H", //10 of hearts
             "JH",
             "QH",
-            "KH",
-            "AH"
+            "KH",       // 50
+            "AH"        // 51
       };
 
 #endif /* __USER_APP1_H */

@@ -173,7 +173,7 @@ void LedOff(LedNameType eLED_)
   if(G_asBspLedConfigurations[(u8)eLED_].eActiveState == ACTIVE_HIGH)
   {
     //int X = 1;
-    int x = 0; //This is a dummy line of code idk i need it, doesn't work without it
+    
     /* Active high LEDs use CODR to turn off */
     pu32OffAddress = (u32*)(&(AT91C_BASE_PIOA->PIO_CODR) + G_asBspLedConfigurations[(u8)eLED_].ePort);
   }
@@ -184,6 +184,7 @@ void LedOff(LedNameType eLED_)
   }
   
   /* Clear the bit corresponding to eLED_ */
+  
 	*pu32OffAddress = G_asBspLedConfigurations[(u8)eLED_].u32BitPosition;
 
   /* Always set the LED back to LED_NORMAL_MODE mode */

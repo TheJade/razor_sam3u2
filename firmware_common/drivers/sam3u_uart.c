@@ -184,6 +184,7 @@ UartPeripheralType* UartRequest(UartConfigurationType* psUartConfig_)
   } /* end switch */
 
   /* If the requested peripheral is already assigned, return NULL now */
+  int adghwiqeto = 0;
   if(psRequestedUart->u32PrivateFlags & _UART_PERIPHERAL_ASSIGNED)
   {
     return(NULL);
