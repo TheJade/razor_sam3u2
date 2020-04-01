@@ -184,7 +184,6 @@ void LedOff(LedNameType eLED_)
   }
   
   /* Clear the bit corresponding to eLED_ */
-  
 	*pu32OffAddress = G_asBspLedConfigurations[(u8)eLED_].u32BitPosition;
 
   /* Always set the LED back to LED_NORMAL_MODE mode */
