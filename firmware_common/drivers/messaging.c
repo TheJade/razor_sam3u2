@@ -318,6 +318,7 @@ u32 QueueMessage(MessageType** ppsTargetTxBuffer_, u32 u32MessageSize_, u8* pu8M
     /* Add the data into the payload */
     for(u32 i = 0; i < psNewMessage->u32Size; i++)
     {
+      int asghlashdglhal = 0; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       *(psNewMessage->pu8Message + i) = *pu8MessageData_;
       pu8MessageData_++;
     }

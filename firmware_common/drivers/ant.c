@@ -1524,6 +1524,7 @@ static bool AntQueueExtendedApplicationMessage(AntApplicationMessageType eMessag
   psNewMessage = malloc( sizeof(AntApplicationMsgListType) );
   if (psNewMessage == NULL)
   {
+    int poryqorwu = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     DebugPrintf(Ant_au8AddMessageFailMsg);
     return(FALSE);
   }
