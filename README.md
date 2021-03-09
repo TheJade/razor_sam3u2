@@ -1,6 +1,10 @@
 #MasterForGames
+
+To see the code I wrote go to firmware_common --> application --> user_app1.c
+
 Description:
   Basic menu system
+  
   
 Contains:
   A few menu states
